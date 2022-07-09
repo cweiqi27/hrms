@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('leave', function (Blueprint $table) {
+        Schema::create('leaves', function (Blueprint $table) {
             $table->id('leave_id');
             $table->date('leave_start_date');
             $table->date('leave_end_date');
             $table->time('leave_start_time');
             $table->time('leave_end_time');
             $table->string('leave_type', 20);
-        });
+            $table->foreignId('employee_id')->constraints();
+            $table->timestamps();
+    });
     }
 
     /**

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employee', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id('employee_id');
             $table->string('employee_name', 50);
             $table->string('employee_email', 50)->unique();
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('status', 10);
             $table->unsignedDecimal('salary', $precision = 15, $scale = 2);
             $table->string('department');
-            $table->foreignId('leave_id')->constraints('leave');
+            $table->timestamps();
         });
     }
 
