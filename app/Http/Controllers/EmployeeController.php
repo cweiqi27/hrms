@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     public function showLeaveEmployee() 
     {
-        //IDK WHAT DOING!! 🥶
+        // 🥶 终于等到周杰伦
         // $employee = Employee::find('id');
         // $leaveEmployee = Leave::whereBelongsTo($employee)->get();
         // return view('index', [ 'employee' => $leaveEmployee ]); 
@@ -19,7 +19,7 @@ class EmployeeController extends Controller
 
     public function testLeave()
     {
-        $leave = Leave::where('employee_id', 8)->get();
-        return view('index', [ 'leave' => $leave ]);
+        $leave = Leave::where('employee_id', 7)->get();
+        return view('leave/index', [ 'leave' => $leave ]);
     }
 }
