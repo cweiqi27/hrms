@@ -18,8 +18,7 @@ return new class extends Migration
             $table->text('task_name');
             $table->datetime('task_start_date');
             $table->datetime('task_end_date');
-            $table->foreignId('admin_id')->constraints();
-            $table->foreignId('employee_id')->constraints();
+            $table->foreignId('staff_id')->constraints();
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->time('leave_start_time');
             $table->time('leave_end_time');
             $table->string('leave_type', 20);
-            $table->foreignId('employee_id')->constraints();
+            $table->foreignId('staff_id')->constraints();
             $table->timestamps();
     });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave');
+        Schema::dropIfExists('leaves');
     }
 };

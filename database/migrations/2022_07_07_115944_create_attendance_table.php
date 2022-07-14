@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('clock_in_time');
             $table->time('clock_out_time');
-            $table->foreignId('employee_id')->constraints();
+            $table->foreignId('staff_id')->constraints();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendance');
+        Schema::dropIfExists('attendances');
     }
 };
