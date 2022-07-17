@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('staff_contact_no', 50)->unique();
+            $table->string('contact_no', 50)->unique();
             $table->string('status', 10);
             $table->unsignedDecimal('salary', $precision = 15, $scale = 2);
-            $table->foreignId('department_id')->constraints();
+            $table->string('department', 20);
             $table->string('password');
             $table->rememberToken();
             $table->string('role');

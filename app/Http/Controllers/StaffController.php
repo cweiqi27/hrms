@@ -4,18 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Leave;
 use App\Models\Staff;
 
 class StaffController extends Controller
 {
-    // register staff user
-    public function create() 
-    {
-        return view('register/create'); 
-    }
-
-
+    // TO BE USED
     public function show()
     {
         // $leaveStaff = Leave::whereBelongsTo($staff)->get();

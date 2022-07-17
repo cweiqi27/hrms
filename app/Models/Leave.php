@@ -11,8 +11,8 @@ class Leave extends Model
 
     protected $primaryKey = 'leave_id';
 
-    public function employee() 
+    public function staff() 
     {
-        return $this->belongsTo(Employee::class, 'staff_id');
+        return $this->belongsTo(Staff::class, 'staff_id');
     }
 }

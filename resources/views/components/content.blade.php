@@ -1,3 +1,3 @@
-<div {{ $attributes->merge(['class' => 'm-4 flex flex-col gap-4 lg:pl-[11rem]']) }}>
+<main {{ $attributes->merge(['class' => 'm-4 flex flex-col gap-4 lg:pl-[11rem]']) }}>
     {{ $slot }}
-</div>
+</main>
