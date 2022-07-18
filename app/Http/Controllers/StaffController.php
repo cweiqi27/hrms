@@ -10,11 +10,24 @@ use App\Models\Staff;
 
 class StaffController extends Controller
 {
-    // TO BE USED
     public function show()
     {
-        // $leaveStaff = Leave::whereBelongsTo($staff)->get();
-        $leave = Leave::where('staff_id', 7)->get();
-        return view('leave/index', [ 'leave' => $leave ]);
+        return view('leave.index');
+    }
+
+    // Profile page
+    public function profile() {
+        // $staff_name = Auth::user()->name;
+        // $staff_email = Auth::user()->email;
+        
+
+        return view('staff.profile', [
+            'staff_name' => Auth::user()->name,
+            'staff_email' => Auth::user()->email,
+            'staff_contact_no' => Auth::user()->contact_no,
+            'staff_status' => Auth::user()->status,
+            'staff_department' => Auth::user()->department,
+            'staff_salary' => Auth::user()->salary,
+        ]);
     }
 }

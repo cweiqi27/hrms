@@ -3,32 +3,78 @@
 
 @endphp --}}
 
-<header class="sticky top-0 w-full max-h-14 bg-slate-50 border-b border-slate-200 lg:px-8">
+<header class="sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
     <nav class="flex flex-none justify-between">
-        <ul class="flex gap-5">
+
+        {{-- MOBILE VIEW --}}
+        <ul class="flex items-center md:hidden">
             <li>
-                <a href="/"><img src="{{ asset('img/HRMS-logo_transparent.png') }}" alt="HRMS logo" class="max-w-[3.5rem]"></a>
+                <a href="/">
+                    <img src="{{ asset('img/HRMS-logo_transparent.png') }}" alt="HRMS logo" class="max-w-[3.5rem]">
+                </a>
             </li>
-            <li class="max-h-14 py-4 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer">
-                <a href="/task">Task</a>
+            <li>
+                <a 
+                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/task">
+                        H R M S
+                </a>
             </li>
-            <li class="max-h-14 py-4 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer">
-                <a href="/leave">Leave</a>
+        </ul>
+        <ul class="flex items-center md:hidden">
+            <li>
+                <ion-icon 
+                    name="menu-outline"
+                    class="px-4 text-lg"
+                    
+                />
             </li>
-            <li class="max-h-14 py-4 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer">
-                <a href="/leave">Monitor</a>
+        </ul>
+
+
+        {{-- DESKTOP/TABLET VIEW --}}
+        <ul class="hidden md:flex gap-5 items-center">
+            <li>
+                <a href="/">
+                    <img src="{{ asset('img/HRMS-logo_transparent.png') }}" alt="HRMS logo" class="max-w-[3.5rem]">
+                </a>
+            </li>
+            <li>
+                <a 
+                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/task">
+                        Task
+                </a>
+            </li>
+            <li>
+                <a 
+                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/leave">
+                        Leave
+                </a>
+            </li>
+            <li>
+                <a 
+                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/leave">
+                        Monitor
+                </a>
             </li>
         </ul>
 
         @auth
-        <ul class="flex gap-5">
-            <li class="max-h-14  py-4 px-2 font-medium text-slate-100">
+        <ul class="hidden md:flex gap-5 items-center">
+            <li class="py-3.5 px-2 font-medium text-slate-100">
                 <a href="" class="rounded-md p-2 bg-emerald-600 ring-2 ring-emerald-200 hover:bg-emerald-400 hover:ring-rose-200 transition-colors duration-150">
                     Clock-In
                 </a>
             </li>
-            <li class="max-h-14 py-4 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer">
-                <a href="">Profile</a>
+            <li>
+                <a 
+                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/profile">
+                        Profile
+                </a>
             </li>
             <li>
                 <form class="inline" method="POST" action="/logout">
@@ -40,12 +86,19 @@
             </li>
         </ul>
         @else
-        <ul class="flex gap-5">
-            <li class="max-h-14 py-4 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer">
-                <a href="/register">Register</a>
+        <ul class="hidden md:flex gap-5 items-center">
+            <li>
+                <a 
+                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/register">
+                        Register
+                </a>
             </li>
-            <li class="max-h-14 py-4 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer">
-                <a href="/login">Login</a>
+            <li>
+                <a class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="/login">
+                        Login
+                </a>
             </li>
         </ul>
         @endauth

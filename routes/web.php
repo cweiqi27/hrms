@@ -9,16 +9,20 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [StaffController::class, 'show']);
 
-// Route::get('/something/{leave}', function (Leave $leave) {
-//     return view('index', ['leave' => $leave]);
-// });
-
 // Register
 Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/staff', [RegisterController::class, 'store']);
+Route::get('/register/employee', [RegisterController::class, 'createEmployee']);
+Route::get('/register/admin', [RegisterController::class, 'createAdmin']);
+Route::post('/staff/{role}', [RegisterController::class, 'store'])->name('staff');
 
 // Login
 Route::get('/login', [LoginController::class, 'login']);
 Route::post('/authenticate', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// Staff
+Route::get('/profile', [StaffController::class, 'profile']);
+
+// Route::get('/something/{leave}', function (Leave $leave) {
+//     return view('index', ['leave' => $leave]);
+// });
