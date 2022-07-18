@@ -1,6 +1,6 @@
-HRMS FYP
+**HRMS FYP**
 
-HOW TO
+**HOW TO**
 1. Clone
 2. Fill up db infos (database, username, password) in .env 
 3. Open a terminal and run "npm install" to install the dependencies
