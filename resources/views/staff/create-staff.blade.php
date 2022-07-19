@@ -1,6 +1,6 @@
 <x-layout title="Register">
     <main>
-        <form action="{{ route('staff', [ 'role' => $role ]) }}" method="POST" autocomplete="off">
+        <form action="{{ route('register.store', [ 'role' => $role ]) }}" method="POST" autocomplete="off">
             @csrf
 
             <x-form.input labelName="Name" name="name" />

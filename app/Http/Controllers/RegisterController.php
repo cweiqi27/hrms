@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 
 class RegisterController extends Controller
@@ -18,12 +19,12 @@ class RegisterController extends Controller
 
     // Register employee page
     public function createEmployee() {
-        return view('staff.create_staff')->with('role', 'employee');
+        return view('staff.create-staff')->with('role', 'employee');
     }
 
     // Register admin page
     public function createAdmin() {
-        return view('staff.create_staff')->with('role', 'admin');
+        return view('staff.create-staff')->with('role', 'admin');
     }
 
     // Register staff
@@ -38,9 +39,7 @@ class RegisterController extends Controller
             'department' => ['required'],
         ]);
 
-        // $formFields = array(['role' => $role, 'status' => 'active']);
-        // $formFields += $formFieldsValidate;
-
+        // Append role to array (admin/employee)
         $formFields['role'] = $role;
 
         // Hash password
@@ -52,6 +51,8 @@ class RegisterController extends Controller
         // Login
         Auth::login($staff);
 
-        return redirect('/')->with('message', 'Staff created and logged in');
+        // Email verification
+        event(new Registered($staff));
+        return redirect('/email/verify')->with('message', 'Verify email to continue');
     }
 }

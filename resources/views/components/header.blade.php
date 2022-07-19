@@ -1,8 +1,3 @@
-{{-- @php
-    $first_name = strtok($first_name, " ");
-
-@endphp --}}
-
 <header class="sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
     <nav class="flex flex-none justify-between">
 
@@ -32,7 +27,7 @@
         </ul>
 
 
-        {{-- DESKTOP/TABLET VIEW --}}
+        {{-- DESKTOP/ TABLET VIEW --}}
         <ul class="hidden md:flex gap-5 items-center">
             <li>
                 <a href="/">
