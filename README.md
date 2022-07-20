@@ -13,7 +13,7 @@
 >`DB_PORT=3306`
 >`DB_DATABASE=hrms_db`
 >`DB_USERNAME=user`
-> `DB_PASSWORD="password"`
+>`DB_PASSWORD="password"`
 
 4.  Install the dependencies:
 
