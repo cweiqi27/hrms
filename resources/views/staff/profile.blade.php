@@ -1,4 +1,4 @@
-<x-layout title="Profile">
+<x-layout title="Profile" type="auth">
     <section>
         <h2>{{ $staff_name }}</h2>
         <h2>{{ $staff_email }}</h2>

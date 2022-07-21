@@ -1,4 +1,4 @@
-<x-layout title="Register">
+<x-layout title="Register" type="auth">
     <main>
         <nav class="flex flex-col">
             <a href="/register/employee">Employee</a>

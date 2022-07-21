@@ -1,4 +1,4 @@
-@props(['title'])
+@props(['title', 'type'])
 
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="shortcut icon" href="img/HRMS-logos_transparent.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/HRMS-icon.ico" type="image/x-icon">
     <link href='fullcalendar/main.css' rel='stylesheet' />
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -29,17 +29,19 @@
 </head>
 
 <body class="bg-white">
-    
-    <x-header /> 
-    <x-sidebar />
-    <x-content>
-        {{ $slot }}
-        @if(session()->has('message'))
-            <div class="text-rose-700">
-                {{ session()->get('message') }}
-            </div>
-        @endif
-    </x-content>
+    @if($type === 'dashboard')    
+        <x-header /> 
+        <x-sidebar />
+        <x-content :type="$type">
+            {{ $slot }}
+            <x-alert.message />
+        </x-content>
+    @else
+        <x-content :type="$type">
+            {{ $slot }}
+            <x-alert.message />
+        </x-content>
+    @endif
 
 </body>
 </html>
