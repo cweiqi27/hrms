@@ -9,12 +9,13 @@
 
 ## Install on your local system
 ### Clone the project
+Run the command below to clone this repository:
 ```bash
 git clone https://github.com/jhuneu/FYP2.git
 ```
 
 ### Create a new MySQL database
-Remember to fill up your database info (database, username, password) in **.env** file
+Also remember to fill up your database info (database, username, password) in **.env** file.
 
  **Example:** 
  ```
@@ -25,16 +26,22 @@ Remember to fill up your database info (database, username, password) in **.env*
  DB_USERNAME=user 
  DB_PASSWORD="password"
  ```
+ 
+ ### Migrate database tables
+ Run the command below to migrate the db tables with Eloquent ORM:
+ ```bash
+ php artisan migrate
+ ```
 
 ### Install all packages
-Install all the dependencies needed to run the project.
+Install all the dependencies needed to run the project:
 
 ```bash
 npm install
  ```
 
 ### Run the project
- Open **2 terminals**, run the commands below on each of the terminals.
+ Open **2 terminals**, run the commands below on each of the terminals:
  
  **Terminal #1**
  ```bash
