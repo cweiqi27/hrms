@@ -15,6 +15,7 @@ git clone https://github.com/jhuneu/FYP2.git
 ```
  
  ### Install all packages
+> Please create a new .env file before running the commands below. Use env.example as a guideline and fill in the necessary details.
 Install all the dependencies needed to run the project:
 
 ```bash
