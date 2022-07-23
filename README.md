@@ -7,6 +7,11 @@
 - [Alpine.js](https://alpinejs.dev/)
 - [MySQL](https://www.mysql.com/)
 
+## Prerequisite
+- [Node.js](https://nodejs.org/en/) version > 16.5.4
+- [Composer](https://getcomposer.org/)
+- [PHP](https://www.php.net/manual/en/install.php)
+
 ## Install on your local system
 ### Clone the project
 Run the command below to clone this repository:
