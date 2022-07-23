@@ -74,9 +74,9 @@
             <li>
                 <form class="inline" method="POST" action="/logout">
                     @csrf
-                    <x-form.button class="max-h-14 py-4 hover:border-b-4 border-rose-700 hover:text-rose-500 transition-colors duration-150">
+                    <x-button.submit class="max-h-14 py-4 hover:border-b-4 border-rose-700 hover:text-rose-500 transition-colors duration-150">
                         Sign Out
-                    </x-form.button>
+                    </x-button.submit>
                 </form>
             </li>
         </ul>

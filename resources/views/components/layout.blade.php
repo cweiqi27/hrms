@@ -42,6 +42,5 @@
             <x-alert.message />
         </x-content>
     @endif
-
 </body>
 </html>
