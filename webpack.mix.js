@@ -15,7 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ])
-    .browserSync({
-        port: 8000,
+    mix.browserSync({
+        proxy: 'http://localhost:8000/',
+        port: 8002,
     });
 
