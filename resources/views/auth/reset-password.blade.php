@@ -1,5 +1,5 @@
 <x-layout title="Reset Password" type="auth">
-    <x-button.back />
+    <a href="{{ route('login') }}"></a>
     <form action="{{ route('password.update') }}" method="POST">
         @csrf
         <x-form.input name="email" labelName="Email" type="email" />

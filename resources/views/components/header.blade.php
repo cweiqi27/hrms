@@ -1,3 +1,4 @@
+@stack('scripts')
 <header class="sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
     <nav class="flex flex-none justify-between">
 

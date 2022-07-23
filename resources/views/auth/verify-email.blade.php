@@ -1,10 +1,10 @@
-<x-layout title="Verify Email">
+<x-layout title="Verify Email" type="auth">
 
     <p>A verification link has been sent to your email.</p>
     <form action="{{ route('verification.resend') }}" method="POST">
         @csrf 
         
-        <x-form.button>Resend verification link</x-form.button>
+        <x-button.submit>Resend verification link</x-button.submit>
     </form>
 
 
