@@ -27,17 +27,28 @@ Also remember to fill up your database info (database, username, password) in **
  DB_PASSWORD="password"
  ```
  
+ ### Install all packages
+Install all the dependencies needed to run the project:
+
+```bash
+composer install
+```
+ 
+```bash
+npm install
+```
+
+### Generate app key
+Generate the app key in .env file with the following command:
+
+```bash
+php artisan key:generate
+```
+ 
  ### Migrate database tables
  Run the command below to migrate the db tables with Eloquent ORM:
  ```bash
  php artisan migrate
- ```
-
-### Install all packages
-Install all the dependencies needed to run the project:
-
-```bash
-npm install
  ```
 
 ### Run the project
