@@ -1,7 +1,7 @@
 @props(['title', 'type'])
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
     <title>HRMS - {{ $title }}</title>
 </head>
 
-<body class="bg-white">
+<body class="bg-white p-0">
     @if($type === 'dashboard')    
         <x-header /> 
         <x-sidebar />

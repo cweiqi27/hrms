@@ -6,7 +6,7 @@
     placeholder="{{ $labelName }}"
     name="{{ $name }}"
     id="{{ $name }}"
-    {{ $attributes->merge(['value' => old($name), 'class' => 'my-2 w-full px-3 py-2 border-2 rounded-md']) }}
+    {{ $attributes->merge(['value' => old($name), 'class' => 'mb-4 w-full px-3 py-2 border-2 rounded-md']) }}
 >
 
 <x-form.error name="{{ $name }}" />

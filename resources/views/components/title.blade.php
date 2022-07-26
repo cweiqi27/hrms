@@ -1,3 +1,3 @@
 @props(['name'])
 
-<h1 class="text-3xl">{{ $name }}</h1>
+<h1 {{ $attributes -> merge(['class' => 'text-3xl']) }}>{{ $name }}</h1>
