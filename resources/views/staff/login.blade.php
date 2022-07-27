@@ -22,7 +22,6 @@
                     Remember me
                 </label>
                 <x-button.submit class="rounded-md text-slate-100 bg-emerald-500 hover:bg-emerald-400 
-                                        outline-1 outline-offset-0 hover:outline-rose-600 
                                         transition-all duration-100 ">
                     Log In
                 </x-button.submit>
