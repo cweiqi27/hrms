@@ -12,19 +12,14 @@ use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
-    // Register page
-    public function create() {
-        return view('staff.create'); 
-    }
-
     // Register employee page
     public function createEmployee() {
-        return view('staff.create-staff')->with('role', 'employee');
+        return view('staff.create')->with('role', 'employee');
     }
 
     // Register admin page
     public function createAdmin() {
-        return view('staff.create-staff')->with('role', 'admin');
+        return view('staff.create')->with('role', 'admin');
     }
 
     // Register staff
