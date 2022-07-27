@@ -1,35 +1,35 @@
-<x-layout title="Login" type="auth">
-    <section class="py-4">
-        <x-title name="Log In" class="md:hidden"/>
-        <p></p>
-    </section>
-    <section class="flex justify-center max-w-screen-lg h-[34rem] mx-auto md:shadow-xl md:shadow-slate-300">
-        <div class="hidden md:flex flex-col flex-1 justify-center items-center 
-                    rounded-l-xl w-0 bg-gradient-to-tr from-emerald-200 to-indigo-200">
-            <x-title name="SIGN IN" class="font-bold tracking-wider text-slate-800"/>
+<x-layout.main-layout title="Login" type="auth">
+    <x-layout.form-layout>
+        <x-layout.form-layout-left>
+            <x-title name="LOG IN" class="font-bold tracking-wider"/>
             <img src="img/HRMS-logos_black.png" alt="HRMS logo" class="w-48">
+            <x-modal.create-modal />
+            
+        </x-layout.form-layout-left>
+        <x-layout.form-layout-right>
             <div>
-                <p class="text-slate-800">
-                    New here?
-                    <a 
-                        href="{{ route('register') }}"
-                        class="hover:underline font-semibold">
-                        Sign Up now
-                    </a>
-                </p>
+                <x-title name="LOG IN" class="md:hidden font-bold tracking-wider"/>
+                <x-modal.create-modal class="md:hidden"/>
             </div>
-        </div>
-        <div class="flex flex-col flex-1 rounded-r-xl max-w-sm md:max-w-none py-4 px-2 md:px-12">
-            <form action="/authenticate" method="POST" autocomplete="off">
+            <form action="/authenticate" method="POST" autocomplete="on" 
+                    class="flex flex-col justify-evenly">
                 @csrf
                 
                 <x-form.input name="email" labelName="Email Address" type="email"  />
                 <x-form.input name="password" labelName="Password" type="password"  />
-                {{-- <x-form.input name="remember" labelName=" " type="checkbox" value="Remember me" /> --}}
-                <x-button.submit>Log In</x-button.submit>
+                <label class="text-slate-600 mb-4 mt-2">
+                    <input type="checkbox" name="remember_me" id="remember_me">
+                    Remember me
+                </label>
+                <x-button.submit class="rounded-md text-slate-100 bg-emerald-500 hover:bg-emerald-400 
+                                        outline-1 outline-offset-0 hover:outline-rose-600 
+                                        transition-all duration-100 ">
+                    Log In
+                </x-button.submit>
             </form>
-            <a href="/forgot-password" class="text-slate-600">Forgot password?</a>
-            {{-- <a href="{{ route('register') }}" class="text-slate-600">Sign Up</a> --}}
-        </div>
-    </section>
-</x-layout>
+            <a href="/forgot-password" class="text-slate-500 hover:text-slate-800 hover:underline">
+                Forgot password?
+            </a>
+        </x-layout.form-layout-right>
+    </x-layout.form-layout>
+</x-layout.main-layout>

@@ -20,14 +20,14 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt(($credentials), $request->get('remember'))) {
+        if (Auth::attempt(($credentials), $request->get('remember_me'))) {
             $request->session()->regenerate();
 
             return redirect()->intended('/');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'password' => 'Invalid Email or Password.',
         ])->onlyInput('email');
     }
 

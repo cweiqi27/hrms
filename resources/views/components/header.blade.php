@@ -22,7 +22,6 @@
                 <ion-icon 
                     name="menu-outline"
                     class="px-4 text-lg"
-                    
                 />
             </li>
         </ul>
@@ -37,21 +36,21 @@
             </li>
             <li>
                 <a 
-                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/task">
                         Task
                 </a>
             </li>
             <li>
                 <a 
-                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/leave">
                         Leave
                 </a>
             </li>
             <li>
                 <a 
-                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/leave">
                         Monitor
                 </a>
@@ -67,7 +66,7 @@
             </li>
             <li>
                 <a 
-                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/profile">
                         Profile
                 </a>
@@ -75,7 +74,7 @@
             <li>
                 <form class="inline" method="POST" action="/logout">
                     @csrf
-                    <x-button.submit class="max-h-14 py-4 hover:border-b-4 border-rose-700 hover:text-rose-500 transition-colors duration-150">
+                    <x-button.submit class="max-h-14 py-4 hover:border-b-4 border-rose-700 text-slate-600 hover:text-rose-500 transition-colors duration-150">
                         Sign Out
                     </x-button.submit>
                 </form>
@@ -85,13 +84,13 @@
         <ul class="hidden md:flex gap-5 items-center">
             <li>
                 <a 
-                    class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/register">
                         Register
                 </a>
             </li>
             <li>
-                <a class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                <a class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/login">
                         Login
                 </a>

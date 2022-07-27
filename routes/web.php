@@ -11,7 +11,6 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', [StaffController::class, 'show'])->middleware('auth')->name('home');
 
 // Register
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::get('/register/employee', [RegisterController::class, 'createEmployee'])->middleware('guest')->name('register.employee');
 Route::get('/register/admin', [RegisterController::class, 'createAdmin'])->middleware('guest')->name('register.admin');
 Route::post('/register/store/{role}', [RegisterController::class, 'store'])->name('register.store');
@@ -27,7 +26,7 @@ Route::post('/email/verification-notification',
 // Login
 Route::get('/login', [LoginController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->middleware('guest')->name('authenticate');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
 // Password reset
 Route::get('/forgot-password', 
