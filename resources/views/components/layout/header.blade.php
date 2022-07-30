@@ -1,6 +1,9 @@
 @stack('scripts')
 <header class="sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
-    <nav class="flex flex-none justify-between">
+    <nav 
+        class="flex flex-none justify-between"
+        x-data="{'isDropdownOpen': 'false'}"    
+    >
 
         {{-- MOBILE VIEW --}}
         <ul class="flex items-center md:hidden">
@@ -12,19 +15,31 @@
             <li>
                 <a 
                     class="py-3.5 px-2 font-medium text-slate-700 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
-                    href="/task">
+                    href="/task"
+                >
                         H R M S
                 </a>
             </li>
         </ul>
-        <ul class="flex items-center md:hidden">
-            <li>
-                <ion-icon 
-                    name="menu-outline"
-                    class="px-4 text-lg"
-                />
-            </li>
-        </ul>
+        <button 
+            class="md:hidden"
+            x-on:click="isDropdownOpen = ! isDropdownOpen"
+        >
+            <ion-icon 
+                name="menu-outline"
+                class="px-4 text-lg"
+            />
+        </button>
+        <div
+            class="fixed top-[3.53rem] left-0 w-screen h-screen py-4 flex flex-col items-center gap-2 md:hidden bg-white"
+            x-show="isDropdownOpen"    
+        >
+            <a href="" class="w-full text-slate-800 text-left font-semibold">TASK</a>
+
+            <a href="" class="w-full text-slate-800 text-left font-semibold">LEAVE</a>
+            <a href="" class="w-full text-slate-800 text-left font-semibold">PROFILE</a>
+        </div>
+
 
 
         {{-- DESKTOP/ TABLET VIEW --}}
