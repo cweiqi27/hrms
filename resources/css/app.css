@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  *, html {
-    @apply p-0 m-0;
+  [x-cloak] {
+    @apply hidden !important;
   }
 }
