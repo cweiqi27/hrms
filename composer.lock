@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b39a52941bbefd1869eec7b0145eb394",
+    "content-hash": "59de041f67133218a30bd62292a500d2",
     "packages": [
         {
             "name": "brick/math",
@@ -65,6 +65,134 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "cmixin/business-day",
+            "version": "1.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kylekatarnls/business-day.git",
+                "reference": "92a60b430ab1616c51c7a286fde1b02cc16c2204"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kylekatarnls/business-day/zipball/92a60b430ab1616c51c7a286fde1b02cc16c2204",
+                "reference": "92a60b430ab1616c51c7a286fde1b02cc16c2204",
+                "shasum": ""
+            },
+            "require": {
+                "ext-calendar": "*",
+                "nesbot/carbon": "^2.25 || ^3@dev",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5.20 || ^8.5.14"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Cmixin\\BusinessDay\\Laravel\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cmixin\\": "src/Cmixin/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KyleKatarn",
+                    "email": "carbon@selfbuild.fr"
+                }
+            ],
+            "description": "Carbon mixin to handle business days",
+            "support": {
+                "issues": "https://github.com/kylekatarnls/business-day/issues",
+                "source": "https://github.com/kylekatarnls/business-day/tree/1.14.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/Carbon",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-04-14T16:22:13+00:00"
+        },
+        {
+            "name": "cmixin/business-time",
+            "version": "1.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kylekatarnls/business-time.git",
+                "reference": "a767cbd88e5882e1e06c39bb5e36b4d6342bec8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kylekatarnls/business-time/zipball/a767cbd88e5882e1e06c39bb5e36b4d6342bec8f",
+                "reference": "a767cbd88e5882e1e06c39bb5e36b4d6342bec8f",
+                "shasum": ""
+            },
+            "require": {
+                "cmixin/business-day": "^1.1",
+                "nesbot/carbon": "^2.28 || ^3@dev",
+                "php": ">=7.1",
+                "spatie/opening-hours": "^2.9 || ^3@dev"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7 || ^8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BusinessTime\\Laravel\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KyleKatarn",
+                    "email": "carbon@selfbuild.fr"
+                }
+            ],
+            "description": "Carbon mixin to handle business days and opening hours",
+            "support": {
+                "issues": "https://github.com/kylekatarnls/business-time/issues",
+                "source": "https://github.com/kylekatarnls/business-time/tree/1.11.2"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/Carbon",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-09-06T12:46:16+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2821,6 +2949,60 @@
                 }
             ],
             "time": "2022-03-27T21:42:02+00:00"
+        },
+        {
+            "name": "spatie/opening-hours",
+            "version": "2.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/opening-hours.git",
+                "reference": "3ef6eb81e836edbef4b1f783114b942befe3e5a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/opening-hours/zipball/3ef6eb81e836edbef4b1f783114b942befe3e5a6",
+                "reference": "3ef6eb81e836edbef4b1f783114b942befe3e5a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "kylekatarnls/multi-tester": "^1.1",
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\OpeningHours\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A helper to query and format a set of opening hours",
+            "homepage": "https://github.com/spatie/opening-hours",
+            "keywords": [
+                "hours",
+                "opening",
+                "opening-hours",
+                "schedule",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/opening-hours/issues",
+                "source": "https://github.com/spatie/opening-hours/tree/2.12.0"
+            },
+            "time": "2022-07-24T15:16:28+00:00"
         },
         {
             "name": "symfony/console",
