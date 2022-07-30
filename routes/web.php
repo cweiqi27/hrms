@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RegisterController;
 
-Route::get('/', [StaffController::class, 'show'])->middleware('auth')->name('home');
+Route::get('/', [StaffController::class, 'show'])->middleware(['auth', 'verified'])->name('home');
 
 // Register
 Route::get('/register-employee', [RegisterController::class, 'createEmployee'])->middleware('guest')->name('register.employee');
@@ -17,9 +17,9 @@ Route::post('/register/store/{role}', [RegisterController::class, 'store'])->nam
 
 // Email verification
 Route::get('/email/verify', 
-    [AuthController::class, 'verify'])->middleware('auth')->name('verification.notice');
+    [AuthController::class, 'verify'])->middleware(['auth', 'unverified'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', 
-    [AuthController::class, 'verifyHandler'])->middleware(['auth', 'signed'])->name('verification.verify');
+    [AuthController::class, 'verifyHandler'])->middleware(['auth', 'unverified', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', 
     [AuthController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
@@ -38,7 +38,7 @@ Route::get('/reset-password/{token}',
 Route::post('/reset-password', 
     [AuthController::class, 'resetHandler'])->middleware('guest')->name('password.update');
 
-
 // Staff
-Route::get('/profile', [StaffController::class, 'profile'])->middleware(['auth', 'verified']);
+Route::get('/profile', [StaffController::class, 'profile'])->middleware(['auth', 'verified'])->name('profile');
+
 
