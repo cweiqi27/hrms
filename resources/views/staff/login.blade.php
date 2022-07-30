@@ -1,5 +1,5 @@
 <x-layout.main-layout title="Login" type="auth">
-    <x-layout.form-layout>
+    <x-layout.form-layout class="h-[34rem]">
         <x-layout.form-layout-left>
             <x-title name="LOG IN" class="font-bold tracking-wider"/>
             <img src="img/HRMS-logos_black.png" alt="HRMS logo" class="w-48">
@@ -21,10 +21,9 @@
                     <input type="checkbox" name="remember_me" id="remember_me">
                     Remember me
                 </label>
-                <x-button.submit class="rounded-md text-slate-100 bg-emerald-500 hover:bg-emerald-400 
-                                        transition-all duration-100 ">
+                <x-button.form-submit>
                     Log In
-                </x-button.submit>
+                </x-button.form-submit>
             </form>
             <a href="/forgot-password" class="text-slate-500 hover:text-slate-800 hover:underline">
                 Forgot password?

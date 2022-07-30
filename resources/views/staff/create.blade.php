@@ -1,8 +1,34 @@
 <x-layout.main-layout title="Register" type="auth">
-    <x-layout.form-layout class="flex-col items-center h-[54rem]">
-        <x-title name="Register" class="flex-1" />
-        <div class="flex flex-col flex-1 gap-8 justify-evenly rounded-xl 
-            max-w-sm md:max-w-none py-4 px-2 md:px-12 md:py-10 bg-white">
+    <x-layout.form-layout class="h-full">
+        <x-layout.form-layout-left>
+            <div>
+                <x-title name="REGISTER" class="font-bold tracking-wider"/>
+                <h2 class="text-slate-700 text-right font-semibold">{{ $role }}</h2>
+            </div>
+            <img src="img/HRMS-logos_black.png" alt="HRMS logo" class="w-48">
+            <h2 class="text-slate-700">
+                Already have an account?
+                <a
+                    class="hover:underline font-semibold"
+                    href="{{ route('login') }}"
+                >
+                    Log In
+                </a>
+            </h2>
+        </x-layout.form-layout-left>
+        <x-layout.form-layout-right>
+            <div>
+                <x-title name="Register" class="md:hidden" />
+                <h2 class="md:hidden text-slate-700">
+                    Already have an account?
+                    <a
+                        class="hover:underline font-semibold"
+                        href="{{ route('login') }}"
+                    >
+                        Log In
+                    </a>
+                </h2>
+            </div>
             <form action="{{ route('register.store', [ 'role' => $role ]) }}" method="POST" autocomplete="off">
                 @csrf
         
@@ -11,8 +37,8 @@
                 <x-form.input labelName="Password" name="password" type="password" />
                 <x-form.input labelName="Confirm Password" name="password_confirmation" type="password" />
                 <x-form.input labelName="Contact Number" name="contact_no" type="number" min="0" />
-                <x-form.input labelName="Status" name="status" value="Active" readonly/>
                 <x-form.input labelName="Salary" name="salary" type="number" min="0" />
+                <x-form.input labelName="" name="status" value="Active" type="hidden" />
                 
                 @if($role === 'admin')
                     <x-form.input labelName="Department" name="department" value="HR" readonly/>
@@ -26,12 +52,11 @@
                     </x-form.select>
                 @endif
         
-                <x-button.submit 
-                    class="rounded-md w-full text-slate-100 bg-emerald-500 hover:bg-emerald-400  
-                        transition-all duration-100">
+                <x-button.form-submit>
                     Sign Up
-                </x-button.submit>
+                </x-button.form-submit>
             </form>
-        </div>
+
+        </x-layout.form-layout-right>
     </x-layout.form-layout>
 </x-layout.main-layout>

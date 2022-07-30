@@ -1,7 +1,7 @@
 @props(['title', 'type'])
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,19 +30,22 @@
     <title>HRMS - {{ $title }}</title>
 </head>
 
-<body class="bg-white" >
+<body class="bg-white h-full" >
     @if($type === 'dashboard')    
-        <x-header /> 
-        <x-sidebar />
+        <x-layout.header /> 
+        <x-layout.sidebar />
         <x-layout.content :type="$type">
             {{ $slot }}
             <x-alert.message />
         </x-layout.content>
     @else
-        <x-layout.content :type="$type">
-            {{ $slot }}
-            {{-- <x-alert.message /> --}}
-        </x-layout.content>
+        <div class="relative min-h-full">
+            <x-layout.content :type="$type">
+                {{ $slot }}
+                {{-- <x-alert.message /> --}}
+            </x-layout.content>
+            <x-layout.footer />
+        </div>
     @endif
 </body>
 </html>

@@ -1,6 +1,6 @@
 @stack('scripts')
 <x-layout.main-layout title="Forgot Password" type="auth">
-    <x-layout.form-layout class="">
+    <x-layout.form-layout class="h-[34rem]">
         <x-layout.form-layout-left>
             <x-title name="Forgot Password" class="font-bold tracking-wider"/>
             <img src="img/HRMS-logos_black.png" alt="HRMS logo" class="w-48">
@@ -14,9 +14,9 @@
                     class="flex flex-col">
                 @csrf        
                 <x-form.input name="email" labelName="Email Address" type="email" /> 
-                <x-button.submit class="rounded-md bg-emerald-500 hover:bg-emerald-400 text-slate-50">
+                <x-button.form-submit>
                     Send password reset link
-                </x-button.submit>
+                </x-button.form-submit>
             </form>
             <a href="{{ route('login') }}" 
                 class="w-full py-1 my-8 text-slate-500 hover:text-slate-800 hover:underline">
