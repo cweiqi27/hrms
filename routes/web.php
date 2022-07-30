@@ -11,8 +11,8 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', [StaffController::class, 'show'])->middleware('auth')->name('home');
 
 // Register
-Route::get('/register/employee', [RegisterController::class, 'createEmployee'])->middleware('guest')->name('register.employee');
-Route::get('/register/admin', [RegisterController::class, 'createAdmin'])->middleware('guest')->name('register.admin');
+Route::get('/register-employee', [RegisterController::class, 'createEmployee'])->middleware('guest')->name('register.employee');
+Route::get('/register-admin', [RegisterController::class, 'createAdmin'])->middleware('guest')->name('register.admin');
 Route::post('/register/store/{role}', [RegisterController::class, 'store'])->name('register.store');
 
 // Email verification
