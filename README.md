@@ -1,11 +1,26 @@
 
 # HRMS FYP
 ## Tech Stack
-- [Laravel](https://laravel.com/)
+### Languages
 - [PHP](https://www.php.net/)
+- [HTML](https://en.wikipedia.org/wiki/HTML)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://www.javascript.com/)
+
+### Frameworks
+- [Laravel](https://laravel.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Alpine.js](https://alpinejs.dev/)
+
+### Database
 - [MySQL](https://www.mysql.com/)
+
+### Other tools and libraries
+- [Carbon](https://carbon.nesbot.com/)
+- [business-time](https://github.com/kylekatarnls/business-time)
+- [Laravel Mix](https://laravel-mix.com/)
+- [webpack](https://webpack.js.org/)
+- [ionicons](https://ionic.io/ionicons)
 
 ## Prerequisite
 - [Node.js](https://nodejs.org/en/) version > 16.5.4
