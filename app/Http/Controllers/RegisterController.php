@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\Rules\Password;
 
 
 class RegisterController extends Controller
@@ -27,7 +28,13 @@ class RegisterController extends Controller
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('staffs', 'email')],
-            'password' => 'required|confirmed|min:7',
+            'password' => ['required', 'confirmed', Password::min(7)
+                                                                ->letters()
+                                                                ->mixedCase()
+                                                                ->numbers()
+                                                                ->symbols()
+                                                                ->uncompromised()
+                        ],
             'contact_no' => ['required', 'min:9', Rule::unique('staffs', 'contact_no')],
             'status' => ['required', 'min:3'],
             'salary' => ['required', 'min:3', 'gte:0'],
