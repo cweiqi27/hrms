@@ -7,20 +7,63 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Leave;
 use App\Models\Staff;
+use Carbon\Carbon;
 
 class StaffController extends Controller
 {
+    // Home page
     public function show()
     {
-        return view('leave.index');
+        $staff_name = Auth::user()->name;
+        $current = Carbon::now();
+        $current_time = Carbon::now()->format('h:i');
+        $noon = Carbon::createFromTime('12');
+        $is_closed = Carbon::parse($current)->isClosed();
+
+        // Difference between opening/closing hour from now
+        if($is_closed)
+            $next_open_or_close = Carbon::nextOpen();
+        else
+            $next_open_or_close = Carbon::nextClose();
+
+        $diff_hour_next = Carbon::parse($current)->diffInRealHours($next_open_or_close);
+        $diff_min_next = Carbon::parse($current)->diffInRealMinutes($next_open_or_close);
+
+        if($diff_min_next > 1) {
+            if($diff_hour_next > 1)
+                $diff_next = $diff_hour_next . " hours";
+            else if($diff_hour_next === 1) 
+                $diff_next = $diff_hour_next . " hour";
+            else
+                $diff_next = $diff_min_next . " minutes";
+        } else {
+            $diff_next = $diff_min_next . " minute";
+        }
+        
+        // Greet type
+        if($current < $noon) 
+            $greet = "morning";
+        else
+            $greet = "afternoon";
+            
+        // Greet message
+        if(Carbon::isBusinessClosed()) 
+            $message = "Closed";
+        else
+            $message = "Good " . $greet . ", " . $staff_name . ".";
+        
+        return view('staff.index', [
+            'staff_name' => Auth::user()->name,
+            'message' => $message,
+            'time_now' => $current_time,
+            'next_open_or_close' => $next_open_or_close->format('h:i'),
+            'diff_next' => $diff_next,
+            'is_closed' => $is_closed,
+        ]);
     }
 
     // Profile page
     public function profile() {
-        // $staff_name = Auth::user()->name;
-        // $staff_email = Auth::user()->email;
-        
-
         return view('staff.profile', [
             'staff_name' => Auth::user()->name,
             'staff_email' => Auth::user()->email,
