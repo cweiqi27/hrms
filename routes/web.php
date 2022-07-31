@@ -4,11 +4,10 @@ use App\Models\Leave;
 use App\Models\Staff;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RegisterController;
-
-Route::get('/', [StaffController::class, 'show'])->middleware(['auth', 'verified'])->name('home');
 
 // Register
 Route::get('/register-employee', [RegisterController::class, 'createEmployee'])->middleware('guest')->name('register.employee');
@@ -38,7 +37,11 @@ Route::get('/reset-password/{token}',
 Route::post('/reset-password', 
     [AuthController::class, 'resetHandler'])->middleware('guest')->name('password.update');
 
-// Staff
+// Staff / Home 
+Route::get('/', [StaffController::class, 'show'])->middleware(['auth', 'verified'])->name('home');
 Route::get('/profile', [StaffController::class, 'profile'])->middleware(['auth', 'verified'])->name('profile');
+
+// Leave
+Route::get('/leave', [LeaveController::class, 'show'])->middleware(['auth', 'verified'])->name('leave.show');
 
 
