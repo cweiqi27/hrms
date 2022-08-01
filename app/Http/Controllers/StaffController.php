@@ -14,7 +14,6 @@ class StaffController extends Controller
     // Home page
     public function show()
     {
-        $staff_name = Auth::user()->name;
         $current = Carbon::now();
         $current_time = Carbon::now()->format('h:i');
         $noon = Carbon::createFromTime('12');
@@ -54,6 +53,7 @@ class StaffController extends Controller
         
         return view('staff.index', [
             'staff_name' => Auth::user()->name,
+            'staff_role' => Auth::user()->role,
             'message' => $message,
             'time_now' => $current_time,
             'next_open_or_close' => $next_open_or_close->format('h:i'),
@@ -66,6 +66,7 @@ class StaffController extends Controller
     public function profile() {
         return view('staff.profile', [
             'staff_name' => Auth::user()->name,
+            'staff_role' => Auth::user()->role,
             'staff_email' => Auth::user()->email,
             'staff_contact_no' => Auth::user()->contact_no,
             'staff_status' => Auth::user()->status,

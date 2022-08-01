@@ -1,6 +1,5 @@
-<x-layout.main-layout title="Home" type="dashboard">
+<x-layout.main-layout title="Home" type="dashboard" :role="$staff_role">
     <x-title :name="$message" />
-    <x-quotes />
     
     @if ($is_closed)
     <p class="">
@@ -13,5 +12,6 @@
     @endif
     
     {{ $time_now }}
+    <x-quotes />
 
 </x-layout.main-layout>

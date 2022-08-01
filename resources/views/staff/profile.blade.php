@@ -1,4 +1,4 @@
-<x-layout.main-layout title="Profile" type="dashboard">
+<x-layout.main-layout title="Profile" type="dashboard" :role="$staff_role">
     <section>
         <h2>{{ $staff_name }}</h2>
         <h2>{{ $staff_email }}</h2>
