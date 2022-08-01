@@ -8,18 +8,37 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPasswordNotification;
 
 class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    
+    // Relationships
     protected $table = 'staffs';
-
     protected $primaryKey = 'staff_id';
 
     public function leave() 
     {
         return $this->hasOne(Leave::class, 'staff_id');
+    }
+
+    public function task() 
+    {
+        return $this->hasMany(Task::class, 'staff_id');
+    }
+
+    public function attendance() 
+    {
+        return $this->hasMany(Attendance::class, 'staff_id');
+    }
+
+    // Password reset notification
+    public function sendPasswordResetNotification($token) {
+        $url = 'https://localhost:8002/reset-password?token='.$token;
+
+        $this->notify(new ResetPasswordNotification($url));
     }
 
     /**

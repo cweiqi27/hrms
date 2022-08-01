@@ -12,7 +12,7 @@ use Carbon\Carbon;
 class StaffController extends Controller
 {
     // Home page
-    public function show()
+    public function home()
     {
         $current = Carbon::now();
         $current_time = Carbon::now()->format('h:i');
@@ -73,5 +73,9 @@ class StaffController extends Controller
             'staff_department' => Auth::user()->department,
             'staff_salary' => Auth::user()->salary,
         ]);
+    }
+
+    public function show() {
+        
     }
 }
