@@ -1,12 +1,15 @@
-@props(['type'])
 @stack('scripts')
 
 <main 
     @if($type === 'dashboard')
-        {{ $attributes->merge(['class' => 'm-4 flex flex-col gap-4 lg:pl-[11rem]']) }}
+        @if(isset($linksCsv))
+            {{ $attributes->merge(['class' => 'm-4 flex flex-col gap-4 lg:pl-[11rem]']) }}
+        @else
+            {{ $attributes->merge(['class' => 'm-4 flex flex-col gap-4']) }}
+        @endif
     @elseif($type === 'auth')
         {{ $attributes->merge([
-                'class' => 'pb-60 sm:pb-24', 
+                'class' => 'pb-[20rem] sm:pb-40', 
             ]) 
         }}
     @endif

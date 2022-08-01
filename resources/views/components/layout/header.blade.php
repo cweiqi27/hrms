@@ -1,4 +1,3 @@
-@props(['role'])
 @stack('scripts')
 <header class="sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
     <nav 
@@ -38,7 +37,7 @@
 
             <a href="" class="w-full py-2 text-slate-50 text-center font-semibold">TASK</a>
             <a href="{{ route('leave.show') }}" class="w-full py-2 text-slate-50 text-center font-semibold">LEAVE</a>
-            <a href="{{ route('profile') }}" class="w-full py-2 text-slate-50 text-center font-semibold">PROFILE</a>
+            <a href="{{ route('staff.profile') }}" class="w-full py-2 text-slate-50 text-center font-semibold">PROFILE</a>
             <form class="inline" method="POST" action="/logout" class="w-full text-center">
                 @csrf
                 <x-button.submit class="py-2 text-slate-50 font-semibold">
@@ -73,7 +72,7 @@
             <li>
                 <a 
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
-                    href="">
+                    href="{{ route('monitor.show') }}">
                         Monitor
                 </a>
             </li>
@@ -81,17 +80,24 @@
 
         @auth
         <ul class="hidden md:flex gap-5 items-center">
-            @unless($role === 'admin')
-            <li class="py-3.5 px-2 font-medium text-slate-100">
-                <a href="" class="rounded-md p-2 bg-emerald-600 ring-2 ring-emerald-200 hover:bg-emerald-400 hover:ring-rose-200 transition-colors duration-150">
-                    Clock-In
-                </a>
+            {{-- @unless($role === 'admin') --}}
+            <li class="font-medium text-slate-100">
+                {{-- <form action="{{ route('clock-in') }}" method="POST" --}}
+                {{-- >
+                    @csrf
+                    <x-button.submit
+                        class="rounded-md p-2 bg-emerald-600 ring-2 ring-emerald-200 hover:bg-emerald-400
+                            hover:ring-rose-200 transition-colors duration-150"
+                    >
+                        Clock-In
+                    </x-button.submit>
+                </form> --}}
             </li>
-            @endunless
+            {{-- @endunless --}}
             <li>
                 <a 
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
-                    href="/profile">
+                    href="{{ route('staff.profile') }}">
                         Profile
                 </a>
             </li>

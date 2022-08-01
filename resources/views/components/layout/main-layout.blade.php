@@ -1,7 +1,11 @@
-@props(['title', 'type', 'role'])
+@aware(['title', 'type', 'role', 'linksCsv'])
 
 <!DOCTYPE html>
+@if ($type === 'auth')
 <html lang="en" class="h-full">
+@else
+<html lang="en">
+@endif
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,11 +35,15 @@
     <title>HRMS - {{ $title }}</title>
 </head>
 
-<body class="bg-white h-full" >
+@if ($type === 'auth')
+<body class="bg-white h-full">
+@else
+<body class="bg-white">
+@endif
     @if($type === 'dashboard')    
-        <x-layout.header :role="$role" /> 
-        <x-layout.sidebar />
-        <x-layout.content :type="$type">
+        <x-layout.header :role="$role"/> 
+        <x-layout.sidebar :linksCsv="$linksCsv"/>
+        <x-layout.content :type="$type" :linksCsv="$linksCsv">
             {{ $slot }}
             <x-alert.message />
         </x-layout.content>
