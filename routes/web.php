@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Leave;
-use App\Models\Staff;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LeaveController;
@@ -10,9 +8,14 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RegisterController;
 
 // Register
-Route::get('/register-employee', [RegisterController::class, 'createEmployee'])->middleware('guest')->name('register.employee');
-Route::get('/register-admin', [RegisterController::class, 'createAdmin'])->middleware('guest')->name('register.admin');
-Route::post('/register/store/{role}', [RegisterController::class, 'store'])->name('register.store');
+Route::controller(RegisterController::class)->group(function() {
+    Route::middleware('guest')->group(function() {
+        Route::get('/register-employee', 'createEmployee')->name('register.employee');
+        Route::get('/register-admin', 'createAdmin')->name('register.admin');
+    });
+
+    Route::post('/register/store/{role}', 'store')->name('register.store');
+});
 
 // Email verification
 Route::get('/email/verify', 
@@ -43,5 +46,3 @@ Route::get('/profile', [StaffController::class, 'profile'])->middleware(['auth',
 
 // Leave
 Route::get('/leave', [LeaveController::class, 'show'])->middleware(['auth', 'verified'])->name('leave.show');
-
-
