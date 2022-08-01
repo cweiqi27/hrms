@@ -1,4 +1,4 @@
-@props(['title', 'type'])
+@props(['title', 'type', 'role'])
 
 <!DOCTYPE html>
 <html lang="en" class="h-full">
@@ -12,7 +12,8 @@
     <link href='fullcalendar/main.css' rel='stylesheet' />
 
     @push('scripts')
-        <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src='fullcalendar/main.js'></script>
@@ -32,7 +33,7 @@
 
 <body class="bg-white h-full" >
     @if($type === 'dashboard')    
-        <x-layout.header /> 
+        <x-layout.header :role="$role" /> 
         <x-layout.sidebar />
         <x-layout.content :type="$type">
             {{ $slot }}
