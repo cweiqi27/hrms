@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class LeaveController extends Controller
 {
-    public function show() {
-        return view('leave.index');
+    public function show()
+    {
+        return view("leave.index");
     }
 }

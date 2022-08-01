@@ -20,8 +20,8 @@ class IsNotVerified
     {
         if ($request->user()->hasVerifiedEmail()) {
             return $request->expectsJson()
-                    ? abort(403, 'You have verified your email.')
-                    : Redirect::home();
+                ? abort(403, "You have verified your email.")
+                : Redirect::home();
         }
 
         return $next($request);

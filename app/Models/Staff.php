@@ -14,29 +14,29 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    
     // Relationships
-    protected $table = 'staffs';
-    protected $primaryKey = 'staff_id';
+    protected $table = "staffs";
+    protected $primaryKey = "staff_id";
 
-    public function leave() 
+    public function leave()
     {
-        return $this->hasOne(Leave::class, 'staff_id');
+        return $this->hasOne(Leave::class, "staff_id");
     }
 
-    public function task() 
+    public function task()
     {
-        return $this->hasMany(Task::class, 'staff_id');
+        return $this->hasMany(Task::class, "staff_id");
     }
 
-    public function attendance() 
+    public function attendance()
     {
-        return $this->hasMany(Attendance::class, 'staff_id');
+        return $this->hasMany(Attendance::class, "staff_id");
     }
 
     // Password reset notification
-    public function sendPasswordResetNotification($token) {
-        $url = 'https://localhost:8002/reset-password?token='.$token;
+    public function sendPasswordResetNotification($token)
+    {
+        $url = "https://localhost:8002/reset-password?token=" . $token;
 
         $this->notify(new ResetPasswordNotification($url));
     }
@@ -47,14 +47,14 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'contact_no',
-        'status',
-        'salary',
-        'role',
-        'department',
+        "name",
+        "email",
+        "password",
+        "contact_no",
+        "status",
+        "salary",
+        "role",
+        "department",
     ];
 
     /**
@@ -62,10 +62,7 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ["password", "remember_token"];
 
     /**
      * The attributes that should be cast.
@@ -73,6 +70,6 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        "email_verified_at" => "datetime",
     ];
 }

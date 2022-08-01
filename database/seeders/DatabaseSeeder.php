@@ -19,6 +19,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\Employee::factory(10)->create();
 
         \App\Models\Leave::factory(10)->create();
-        
     }
 }

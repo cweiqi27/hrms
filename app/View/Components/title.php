@@ -23,6 +23,6 @@ class title extends Component
      */
     public function render()
     {
-        return view('components.title');
+        return view("components.title");
     }
 }

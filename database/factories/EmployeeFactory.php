@@ -17,12 +17,12 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            'employee_name' => $this->faker->name(),
-            'employee_email' => $this->faker->unique()->safeEmail(),
-            'employee_contact_no' => $this->faker->unique()->numerify(),
-            'status' => $this->faker->text(10),
-            'salary' => $this->faker->randomFloat(2),
-            'department' => $this->faker->text(20),
+            "employee_name" => $this->faker->name(),
+            "employee_email" => $this->faker->unique()->safeEmail(),
+            "employee_contact_no" => $this->faker->unique()->numerify(),
+            "status" => $this->faker->text(10),
+            "salary" => $this->faker->randomFloat(2),
+            "department" => $this->faker->text(20),
         ];
     }
 }

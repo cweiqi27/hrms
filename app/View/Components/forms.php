@@ -23,6 +23,6 @@ class forms extends Component
      */
     public function render()
     {
-        return view('components.forms');
+        return view("components.forms");
     }
 }

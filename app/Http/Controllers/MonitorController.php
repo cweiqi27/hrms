@@ -8,9 +8,10 @@ use App\Models\Staff;
 
 class MonitorController extends Controller
 {
-    public function show() {
-        return view('monitor.index', [
-            'staff_role' => Auth::user()->role,
+    public function show()
+    {
+        return view("monitor.index", [
+            "staff_role" => Auth::user()->role,
         ]);
     }
 }

@@ -10,10 +10,10 @@ class Task extends Model
     use HasFactory;
 
     // Relationships
-    protected $primaryKey = 'task_id';
+    protected $primaryKey = "task_id";
 
-    public function staff() 
+    public function staff()
     {
-        return $this->hasOne(Staff::class, 'staff_id');
+        return $this->hasOne(Staff::class, "staff_id");
     }
 }

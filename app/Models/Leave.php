@@ -10,10 +10,10 @@ class Leave extends Model
     use HasFactory;
 
     // Relationships
-    protected $primaryKey = 'leave_id';
+    protected $primaryKey = "leave_id";
 
-    public function staff() 
+    public function staff()
     {
-        return $this->belongsTo(Staff::class, 'staff_id');
+        return $this->belongsTo(Staff::class, "staff_id");
     }
 }

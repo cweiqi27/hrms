@@ -23,6 +23,6 @@ class content extends Component
      */
     public function render()
     {
-        return view('components.content');
+        return view("components.content");
     }
 }

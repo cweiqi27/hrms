@@ -23,6 +23,6 @@ class button extends Component
      */
     public function render()
     {
-        return view('components.button');
+        return view("components.button");
     }
 }

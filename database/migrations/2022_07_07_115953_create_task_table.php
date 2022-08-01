@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,12 +12,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id('task_id');
-            $table->text('task_name');
-            $table->datetime('task_start_date');
-            $table->datetime('task_end_date');
-            $table->foreignId('staff_id')->constraints();
+        Schema::create("tasks", function (Blueprint $table) {
+            $table->id("task_id");
+            $table->text("task_name");
+            $table->datetime("task_start_date");
+            $table->datetime("task_end_date");
+            $table->foreignId("staff_id")->constraints();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists("tasks");
     }
 };

@@ -7,11 +7,11 @@ use Carbon\Carbon;
 
 class ClockInController extends Controller
 {
-    public function clockIn(Request $request) {
-        
+    public function clockIn(Request $request)
+    {
     }
 
-    public function clockOut() {
-
+    public function clockOut()
+    {
     }
 }

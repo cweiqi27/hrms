@@ -10,10 +10,10 @@ class Attendance extends Model
     use HasFactory;
 
     // Relationships
-    protected $primaryKey = 'attendance_id';
+    protected $primaryKey = "attendance_id";
 
-    public function staff() 
+    public function staff()
     {
-        return $this->hasOne(Staff::class, 'staff_id');
+        return $this->hasOne(Staff::class, "staff_id");
     }
 }
