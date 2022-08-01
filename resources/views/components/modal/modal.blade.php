@@ -4,6 +4,7 @@
     x-cloak
     x-transition.opacity
     x-transition:leave.duration.150ms
+
 >
     <div 
         class="flex justify-center items-center w-full h-full"
@@ -11,6 +12,11 @@
         x-cloak
         x-transition
         x-transition:leave.duration.150ms
+        x-trap.noscroll="isModalOpen"
+        @keydown.right="$focus.next()"
+        @keydown.down="$focus.next()"
+        @keydown.left="$focus.previous()"
+        @keydown.up="$focus.previous()"
     >
         <div {{ $attributes -> merge([
             'class' => 'flex flex-col gap-4 min-w-min rounded-md bg-white pt-4 pb-6 px-8 shadow-md'
