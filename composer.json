@@ -49,7 +49,7 @@
             "@php artisan key:generate --ansi"
         ],
         "fix-cs": [
-            "prettier app/**/* database/**/* routes/**/* --write",
+            "prettier app/**/* routes/**/* --write",
             "php-cs-fixer fix"
         ]
     },
