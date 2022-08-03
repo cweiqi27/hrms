@@ -1,4 +1,4 @@
-<x-layout.main-layout title="Home" type="dashboard" :role="$staff_role">
+<x-layout.main-layout title="Home" type="dashboard" :role="$staff->role">
     <x-title :name="$message" />
     
     @if ($is_closed)

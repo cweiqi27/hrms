@@ -14,4 +14,12 @@ class MonitorController extends Controller
             "staff_role" => Auth::user()->role,
         ]);
     }
+
+    // Individual staff account page
+    public function showStaff(Staff $staff)
+    {
+        return view('monitor.show-staff', [
+            'staff' => $staff,
+        ]);
+    }
 }

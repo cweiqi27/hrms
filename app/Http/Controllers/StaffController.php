@@ -54,14 +54,13 @@ class StaffController extends Controller
 
         // Greet message
         if (Carbon::isBusinessClosed()) {
-            $message = "Closed";
+            $message = "Hey, " . Auth::user()->name . ". Take a rest.";
         } else {
-            $message = "Good " . $greet . ", " . $staff_name . ".";
+            $message = "Good " . $greet . ", " . Auth::user()->name . ".";
         }
 
         return view("staff.index", [
-            "staff_name" => Auth::user()->name,
-            "staff_role" => Auth::user()->role,
+            "staff" => Auth::user(),
             "message" => $message,
             "time_now" => $current_time,
             "next_open_or_close" => $next_open_or_close->format("h:i"),
@@ -74,17 +73,9 @@ class StaffController extends Controller
     public function profile()
     {
         return view("staff.profile", [
-            "staff_name" => Auth::user()->name,
-            "staff_role" => Auth::user()->role,
-            "staff_email" => Auth::user()->email,
-            "staff_contact_no" => Auth::user()->contact_no,
-            "staff_status" => Auth::user()->status,
-            "staff_department" => Auth::user()->department,
-            "staff_salary" => Auth::user()->salary,
+            "staff" => Auth::user(),
         ]);
     }
 
-    public function show()
-    {
-    }
+    
 }

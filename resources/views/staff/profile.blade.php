@@ -1,10 +1,5 @@
-<x-layout.main-layout title="Profile" type="dashboard" :role="$staff_role">
+<x-layout.main-layout title="Profile" type="dashboard" :role="$staff->role" sidebarLinkType="profile">
     <section>
-        <h2>{{ $staff_name }}</h2>
-        <h2>{{ $staff_email }}</h2>
-        <h2>{{ $staff_contact_no }}</h2>
-        <h2>{{ $staff_status }}</h2>
-        <h2>{{ $staff_department }}</h2>       
-        <h2>{{ $staff_salary }}</h2>
+        <x-staff-details :staff="$staff" />
     </section>
 </x-layout.main-layout>
