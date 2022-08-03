@@ -1,3 +1,3 @@
-<div class="">
+<div {{ $attributes->merge(['class' => 'flex']) }}>
     {{ $slot }}
 </div>
