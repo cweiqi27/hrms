@@ -69,7 +69,6 @@ Route::controller(StaffController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::get("/", "home")->name("home");
         Route::get("/staff/profile", "profile")->name("staff.profile");
-        Route::get("/staff/{name}", "show")->name("staff.show");
     });
 });
 
@@ -77,6 +76,7 @@ Route::controller(StaffController::class)->group(function () {
 Route::controller(MonitorController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::get("/monitor", "show")->name("monitor.show");
+        Route::get("/staff/{staff}", "showStaff")->name("monitor.show-staff");
     });
 });
 

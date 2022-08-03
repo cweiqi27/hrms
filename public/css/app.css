@@ -593,9 +593,6 @@ video {
 .table {
   display: table;
 }
-.contents {
-  display: contents;
-}
 .hidden {
   display: none;
 }
@@ -613,27 +610,6 @@ video {
 }
 .max-h-14 {
   max-height: 3.5rem;
-}
-.max-h-full {
-  max-height: 100%;
-}
-.max-h-\[60rem\] {
-  max-height: 60rem;
-}
-.max-h-\[10rem\] {
-  max-height: 10rem;
-}
-.max-h-\[2rem\] {
-  max-height: 2rem;
-}
-.max-h-\[40rem\] {
-  max-height: 40rem;
-}
-.max-h-\[20rem\] {
-  max-height: 20rem;
-}
-.max-h-\[5rem\] {
-  max-height: 5rem;
 }
 .min-h-full {
   min-height: 100%;
@@ -880,32 +856,14 @@ video {
   padding-left: 2rem;
   padding-right: 2rem;
 }
-.pb-60 {
-  padding-bottom: 15rem;
+.pb-\[20rem\] {
+  padding-bottom: 20rem;
 }
 .pt-4 {
   padding-top: 1rem;
 }
 .pb-6 {
   padding-bottom: 1.5rem;
-}
-.pb-80 {
-  padding-bottom: 20rem;
-}
-.pb-\[100rem\] {
-  padding-bottom: 100rem;
-}
-.pb-\[80rem\] {
-  padding-bottom: 80rem;
-}
-.pb-\[50rem\] {
-  padding-bottom: 50rem;
-}
-.pb-\[40rem\] {
-  padding-bottom: 40rem;
-}
-.pb-\[20rem\] {
-  padding-bottom: 20rem;
 }
 .text-center {
   text-align: center;
@@ -1153,10 +1111,6 @@ video {
   .sm\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
-  }
-
-  .sm\:pb-24 {
-    padding-bottom: 6rem;
   }
 
   .sm\:pb-40 {
