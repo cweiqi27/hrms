@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
-    // Search staff 
+    // Search staff
     public function searchStaff()
     {
         $staff_role = Auth::user()->role;
@@ -28,7 +28,7 @@ class SearchController extends Controller
             ->orWhere("email", "LIKE", "%" . $query . "%")
             ->get();
 
-        return (count($staff) > 0 && $query !== null)
+        return count($staff) > 0 && $query !== null
             ? view("monitor.search-staff", [
                 "staff_role" => $staff_role,
                 "staff_details" => $staff,

@@ -76,6 +76,4 @@ class StaffController extends Controller
             "staff" => Auth::user(),
         ]);
     }
-
-    
 }

@@ -18,8 +18,8 @@ class MonitorController extends Controller
     // Individual staff account page
     public function showStaff(Staff $staff)
     {
-        return view('monitor.show-staff', [
-            'staff' => $staff,
+        return view("monitor.show-staff", [
+            "staff" => $staff,
         ]);
     }
 }
