@@ -1,4 +1,4 @@
-@aware(['title', 'type', 'role', 'linksCsv'])
+@aware(['title', 'type', 'role', 'sidebarLinkType'])
 
 <!DOCTYPE html>
 @if ($type === 'auth')
@@ -42,8 +42,8 @@
 @endif
     @if($type === 'dashboard')    
         <x-layout.header :role="$role"/> 
-        <x-layout.sidebar :linksCsv="$linksCsv"/>
-        <x-layout.content :type="$type" :linksCsv="$linksCsv">
+        <x-layout.sidebar :sidebarLinkType="$sidebarLinkType"/>
+        <x-layout.content :type="$type" :sidebarLinkType="$sidebarLinkType">
             {{ $slot }}
             <x-alert.message />
         </x-layout.content>
