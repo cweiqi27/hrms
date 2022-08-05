@@ -2,7 +2,7 @@
 return [
     'monitorLinksCsv' => 'Staff,Payroll,Attendance,Performance',
     'monitorLinksHref' => [
-        "0" => "staff.profile", 
+        "0" => "search.staff", 
         "1" => "home", 
         "2" => "monitor.show", 
         "3" => "leave.show",
@@ -14,5 +14,10 @@ return [
         "2" => "monitor.show", 
         "3" => "leave.show",
         "4" => "leave.show",
+    ],
+    'profileLinksCsv' => 'Edit,Change password',
+    'profileLinksHref' => [
+        "0" => "staff.profile", 
+        "1" => "home", 
     ],
 ];

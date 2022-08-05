@@ -4,7 +4,7 @@ namespace App\Helper;
 class Helper
 {
     /*
-     * Convert sidebar links comma-separated values into key value array.
+     * Convert sidebar links csv (comma-separated values) into a key value array.
      * $linksArr = ['$linksHref' => '$linksCsv'];
      */
     public static function convertSidebarLinks($linksCsv, $linksHref)
@@ -21,13 +21,11 @@ class Helper
 
     public static function links($linksType)
     {
-        if ($linksType === "monitor") {
-            $linksCsv = explode(",", config("shared_vars.monitorLinksCsv"));
-            $linksHref = config("shared_vars.monitorLinksHref");
-        } else {
-            $linksCsv = explode(",", config("shared_vars.taskLinksCsv"));
-            $linksHref = config("shared_vars.taskLinksHref");
-        }
+        $linksCsvVar = $linksType . "LinksCsv";
+        $linksHrefVar = $linksType . "LinksHref";
+        
+        $linksCsv = explode(",", config("shared_vars.$linksCsvVar"));
+        $linksHref = config("shared_vars.$linksHrefVar");
 
         return Helper::convertSidebarLinks($linksCsv, $linksHref);
     }
