@@ -76,4 +76,11 @@ class StaffController extends Controller
             "staff" => Auth::user(),
         ]);
     }
+
+    public function edit()
+    {
+        return view("staff.edit", [
+            "staff" => Auth::user(),
+        ]);
+    }
 }

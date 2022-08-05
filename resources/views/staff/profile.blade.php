@@ -1,4 +1,9 @@
-<x-layout.main-layout title="Profile" type="dashboard" :role="$staff->role" sidebarLinkType="profile">
+@php
+    $firstName = strtok($staff->name, ' ');
+    $profileTitle = "Profile -" . " " . $firstName; 
+@endphp
+
+<x-layout.main-layout :title="$profileTitle" type="dashboard" :role="$staff->role" sidebarLinkType="profile">
     <section>
         <x-staff-details :staff="$staff" />
     </section>
