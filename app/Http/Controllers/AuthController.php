@@ -95,4 +95,24 @@ class AuthController extends Controller
                 ->with("status", __($status))
             : back()->withErrors(["email" => [__($status)]]);
     }
+
+    // Confirm password page
+    public function confirm()
+    {
+        return view('auth.confirm-password');
+    }
+
+    // Confirm password handler
+    public function confirmHandler(Request $request)
+    {
+        if(! Hash::check($request->password, $request->user()->password)) {
+            return back()->withErrors([
+                'password' => ['Password invalid.']
+            ]);
+        }
+
+        $request->session()->passwordConfirmed();
+
+        return redirect()->intended();
+    }
 }

@@ -50,26 +50,36 @@ Route::post("/logout", [LoginController::class, "logout"])
     ->middleware("auth")
     ->name("logout");
 
-// Password reset
-Route::get("/forgot-password", [AuthController::class, "forgot"])
-    ->middleware("guest")
-    ->name("password.request");
-Route::post("/forgot-password", [AuthController::class, "forgotHandler"])
-    ->middleware("guest")
-    ->name("password.email");
-Route::get("/reset-password/{token}", [AuthController::class, "reset"])
-    ->middleware("guest")
-    ->name("password.reset");
-Route::post("/reset-password", [AuthController::class, "resetHandler"])
-    ->middleware("guest")
-    ->name("password.update");
+// Password reset / confirmation
+Route::controller(AuthController::class)->group(function () {
+    Route::middleware("guest")->group(function() {
+        Route::get("/forgot-password", "forgot")->name("password.request");
+        Route::post("/forgot-password", "forgotHandler")->name("password.email");
+        Route::get("/reset-password/{token}", "reset")->name("password.reset");
+        Route::post("/reset-password", "resetHandler")->name("password.update");
+    });
+    Route::middleware("auth")->group(function() {
+        Route::get("/confirm-password", "confirm")->name("password.confirm");
+        Route::post("/confirm-password", "confirmHandler")
+            ->middleware("throttle:6,1")
+            ->name("password.confirm-password");
+    });
+});
 
-// Staff / Home
+
+// Staff
 Route::controller(StaffController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::get("/", "home")->name("home");
         Route::get("/staff/profile", "profile")->name("staff.profile");
-        Route::get("/staff/edit", "edit")->name("staff.edit");
+        Route::post("/staff/edit", "update")->name("staff.update");
+        Route::post("/staff/security", "updatePassword")->name("staff.update-password");
+        Route::middleware("password.confirm")->group(function() {
+            Route::get("/staff/security", "security")
+                ->name("staff.security");
+            Route::get("/staff/edit", "edit")
+                ->name("staff.edit");
+        });
     });
 });
 
