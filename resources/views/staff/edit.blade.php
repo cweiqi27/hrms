@@ -7,7 +7,7 @@
     }"
 >
     <x-title :name="$staff->name" />
-    <form action="/edit" method="POST">
+    <form action="{{ route('staff.update') }}" method="POST" autocomplete="off">
         @csrf
         <div class="flex gap-4">
             <h2>Name: {{ $staff->name }}</h2>
@@ -32,12 +32,12 @@
         />
 
         <div class="flex gap-4">
-            <h2>Email: {{ $staff->contact_no }}</h2>
+            <h2>Contact No.: {{ $staff->contact_no }}</h2>
             <button type="button" x-on:click="isEditableContact = ! isEditableContact">edit</button>
         </div>
         <x-form.input
         labelName=""
-        name="email"
+        name="contact_no"
         :placeholder="$staff->contact_no"
         x-show="isEditableContact"
         />

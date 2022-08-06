@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Leave;
 use App\Models\Staff;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -77,10 +78,54 @@ class StaffController extends Controller
         ]);
     }
 
+    // Edit profile page
     public function edit()
     {
         return view("staff.edit", [
             "staff" => Auth::user(),
         ]);
+    }
+
+    // Update profile
+    public function update(Request $request)
+    {
+        $staff = Staff::find(Auth::user()->staff_id);
+
+        $staff->name = $request->input('name');
+        $staff->email = $request->input('email');
+        $staff->contact_no = $request->input('contact_no');
+
+        $staff->save();
+
+        return back()->withMessage('Profile successfully updated.');
+    }
+
+    // Security page
+    public function security()
+    {
+        return view("staff.security", [
+            'staff' => Auth::user()
+        ]);
+    }
+
+    // Update password
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'confirmed'],
+            'password_current' => ['required']
+        ]);
+
+        $old_password = $request->input('password_current');
+        $staff = Staff::find(Auth::user()->staff_id);
+
+        if(! Hash::check($old_password, $staff->password)) {
+            return back()->withMessage('Password changed success.');
+        }
+
+        return back()
+            ->withErrors([
+                'password_current' => "Incorrect old password"
+            ]);
     }
 }
