@@ -1,6 +1,6 @@
 @stack('scripts')
-<header class="sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
-    <nav 
+<header class="z-50 sticky top-0 w-full h-14 bg-slate-50 border-b border-slate-200 px-2 md:px-4 lg:px-8">
+    <nav
         class="flex flex-none justify-between"
         x-data="{ isDropdownOpen: false }"
     >
@@ -13,20 +13,20 @@
                 </a>
             </li>
         </ul>
-        
-        <button 
+
+        <button
             class="md:hidden"
             x-on:click="isDropdownOpen = ! isDropdownOpen"
         >
-            <ion-icon 
+            <ion-icon
                 name="menu-outline"
                 class="px-4 text-lg"
             />
         </button>
         <div
             class="flex-none fixed top-[3.53rem] left-0 w-screen h-screen py-4 flex flex-col items-center gap-2 md:hidden bg-emerald-800"
-            x-show="isDropdownOpen" 
-            x-cloak   
+            x-show="isDropdownOpen"
+            x-cloak
             x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="translate-x-full"
             x-transition:enter-end="translate-x-0"
@@ -56,21 +56,21 @@
                 </a>
             </li>
             <li>
-                <a 
+                <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/task">
                         Task
                 </a>
             </li>
             <li>
-                <a 
+                <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="{{ route('leave.show') }}">
                         Leave
                 </a>
             </li>
             <li>
-                <a 
+                <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="{{ route('monitor.show') }}">
                         Monitor
@@ -95,7 +95,7 @@
             </li>
             {{-- @endunless --}}
             <li>
-                <a 
+                <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="{{ route('staff.profile') }}">
                         Profile
@@ -113,7 +113,7 @@
         @else
         <ul class="hidden md:flex gap-5 items-center">
             <li>
-                <a 
+                <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
                     href="/register">
                         Register
@@ -127,6 +127,6 @@
             </li>
         </ul>
         @endauth
-        
+
     </nav>
 </header>
