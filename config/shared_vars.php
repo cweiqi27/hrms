@@ -2,22 +2,23 @@
 return [
     'monitorLinksCsv' => 'Staff,Payroll,Attendance,Performance',
     'monitorLinksHref' => [
-        "0" => "search.staff", 
-        "1" => "home", 
-        "2" => "monitor.show", 
+        "0" => "search.staff",
+        "1" => "home",
+        "2" => "monitor.show",
         "3" => "leave.show",
     ],
     'taskLinksCsv' => 'Create Task,Search Task,Monitor Task,Update Task, Delete Task',
     'taskLinksHref' => [
-        "0" => "staff.profile", 
-        "1" => "home", 
-        "2" => "monitor.show", 
+        "0" => "staff.profile",
+        "1" => "home",
+        "2" => "monitor.show",
         "3" => "leave.show",
         "4" => "leave.show",
     ],
-    'profileLinksCsv' => 'Edit,Change password',
+    'profileLinksCsv' => 'Profile,Edit,Security',
     'profileLinksHref' => [
-        "0" => "staff.profile", 
-        "1" => "home", 
+        "0" => "staff.profile",
+        "1" => "staff.edit",
+        "2" => "staff.security",
     ],
 ];

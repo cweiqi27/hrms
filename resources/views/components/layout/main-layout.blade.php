@@ -31,7 +31,7 @@
             });
         </script>
     @endpush
-    
+
     <title>HRMS - {{ $title }}</title>
 </head>
 
@@ -40,8 +40,8 @@
 @else
 <body class="bg-white">
 @endif
-    @if($type === 'dashboard')    
-        <x-layout.header :role="$role"/> 
+    @if($type === 'dashboard' || $type === 'index')
+        <x-layout.header :role="$role"/>
         <x-layout.sidebar :sidebarLinkType="$sidebarLinkType"/>
         <x-layout.content :type="$type" :sidebarLinkType="$sidebarLinkType">
             {{ $slot }}

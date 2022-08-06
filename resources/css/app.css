@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  [x-cloak] {
+    [x-cloak] {
     @apply hidden !important;
-  }
+    }
+
 }

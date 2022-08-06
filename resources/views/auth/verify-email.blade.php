@@ -2,11 +2,15 @@
 
     <x-layout.form-layout class="flex-col items-center gap-8 h-[34rem]">
         <x-title name="Verify Email" />
-        <p class="text-slate-600">A verification link has been sent to your email.</p>
-        <p class="text-slate-600">Please verify your email to proceed.</p>
+        <x-subheading>
+            A verification link has been sent to your email.
+        </x-subheading>
+        <x-subheading>
+            Please verify your email to proceed.
+        </x-subheading>
         <form action="{{ route('verification.resend') }}" method="POST">
-            @csrf 
-            
+            @csrf
+
             <x-button.form-submit>
                 Resend verification link
             </x-button.form-submit>
