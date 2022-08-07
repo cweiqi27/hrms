@@ -1,7 +1,10 @@
 <x-layout.main-layout title="Verify Email" type="auth">
 
-    <x-layout.form-layout class="flex-col items-center gap-8 h-[34rem]">
-        <x-title name="Verify Email" />
+    <x-layout.form-layout class="flex-col items-start gap-8 px-2 sm:px-12 h-[34rem]">
+        <div class="flex gap-4 items-end">
+            <x-title name="Verify Email" />
+            <ion-icon name="mail-outline" class="text-3xl text-emerald-500"></ion-icon>
+        </div>
         <x-subheading>
             A verification link has been sent to your email.
         </x-subheading>
