@@ -1,6 +1,6 @@
 <?php
 return [
-    'monitorLinksCsv' => 'Staff,Payroll,Attendance,Performance',
+    'monitorLinksCsv' => 'Search Staff,Payroll,Attendance,Performance',
     'monitorLinksHref' => [
         "0" => "search.staff",
         "1" => "home",
