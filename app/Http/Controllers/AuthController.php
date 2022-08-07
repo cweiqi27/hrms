@@ -107,7 +107,7 @@ class AuthController extends Controller
     {
         if(! Hash::check($request->password, $request->user()->password)) {
             return back()->withErrors([
-                'password' => ['Password invalid.']
+                'password' => ['Wrong password']
             ]);
         }
 
