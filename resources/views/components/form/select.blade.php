@@ -1,11 +1,16 @@
 @props(['labelName','name'])
 
-<x-form.label :name="$name" :labelName="$labelName" />
+<label
+    for="{{ $name }}"
+    class="text-gray-600 text-sm font-semibold"
+>
+    {{ $labelName }}
+</label>
 
-<select 
-    name="{{ $name }}" 
+<select
+    name="{{ $name }}"
     id="{{ $name }}"
-    class="mb-4  w-full px-3 py-2 border-2 rounded-md"
+    class="mt-2 mb-4 w-full px-3 py-2 border-2 rounded-md"
     >
     {{ $slot }}
 </select>
