@@ -7,7 +7,7 @@ class Helper
      * Convert sidebar links csv (comma-separated values) into a key value array.
      * $linksArr = ['$linksHref' => '$linksCsv'];
      */
-    public static function convertSidebarLinks($linksCsv, $linksHref)
+    public static function convertSidebarLinks($linksCsv, $linksHref): array
     {
         $linksArr = array_flip($linksHref);
 
@@ -19,11 +19,11 @@ class Helper
         return $linksArr;
     }
 
-    public static function links($linksType)
+    public static function links($linksType): array
     {
         $linksCsvVar = $linksType . "LinksCsv";
         $linksHrefVar = $linksType . "LinksHref";
-        
+
         $linksCsv = explode(",", config("shared_vars.$linksCsvVar"));
         $linksHref = config("shared_vars.$linksHrefVar");
 
