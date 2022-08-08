@@ -27,7 +27,7 @@
                 route="search.staff"
                 title="Performance"
                 description="Evaluate employee performance"
-                icon="trending-up-outline"
+                icon="bar-chart-outline"
             />
         </x-layout.index-main>
     </x-layout.index-layout>
