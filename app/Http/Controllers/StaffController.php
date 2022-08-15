@@ -9,6 +9,8 @@ use App\Models\Leave;
 use App\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 
 class StaffController extends Controller
 {
@@ -21,18 +23,13 @@ class StaffController extends Controller
         $is_closed = Carbon::parse($current)->isClosed();
 
         // Difference between opening/closing hour from now
-        if ($is_closed) {
-            $next_open_or_close = Carbon::nextOpen();
-        } else {
-            $next_open_or_close = Carbon::nextClose();
-        }
+        $is_closed
+            ? $next_open_or_close = Carbon::nextOpen()
+            : $next_open_or_close = Carbon::nextClose();
 
-        $diff_hour_next = Carbon::parse($current)->diffInRealHours(
-            $next_open_or_close
-        );
-        $diff_min_next = Carbon::parse($current)->diffInRealMinutes(
-            $next_open_or_close
-        );
+        $diff_hour_next = Carbon::parse($current)->diffInRealHours($next_open_or_close);
+        $diff_min_next = Carbon::parse($current)->diffInRealMinutes($next_open_or_close);
+
 
         if ($diff_min_next > 1) {
             if ($diff_hour_next > 1) {
@@ -47,11 +44,10 @@ class StaffController extends Controller
         }
 
         // Greet type
-        if ($current < $noon) {
-            $greet = "morning";
-        } else {
-            $greet = "afternoon";
-        }
+        $current < $noon
+            ? $greet = "morning"
+            : $greet = "afternoon";
+
 
         // Greet message
         if (Carbon::isBusinessClosed()) {
@@ -91,13 +87,27 @@ class StaffController extends Controller
     {
         $staff = Staff::find(Auth::user()->staff_id);
 
+        $request->validate([
+            'name' => ['required', 'min:3'],
+            "contact_no" => [
+                "required",
+                "min:9",
+                Rule::unique("staffs", "contact_no"),
+            ],
+            'department' => ['required']
+        ]);
+
         $staff->name = $request->input('name');
-        $staff->email = $request->input('email');
         $staff->contact_no = $request->input('contact_no');
+        $staff->department = $request->input('department');
 
         $staff->save();
 
-        return back()->withMessage('Profile successfully updated.');
+
+        return back()
+            ->withErrors('Error')
+            ->withMessage('Profile successfully updated.');
+
     }
 
     // Security page
