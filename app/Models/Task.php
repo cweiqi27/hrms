@@ -12,6 +12,15 @@ class Task extends Model
     // Relationships
     protected $primaryKey = "task_id";
 
+    protected $fillable = [
+        'task_name',
+        'task_status',
+        'task_assign_date',
+        'task_start_date',
+        'task_end_date',
+        'staff_id'
+    ];
+
     public function staff()
     {
         return $this->hasOne(Staff::class, "staff_id");
