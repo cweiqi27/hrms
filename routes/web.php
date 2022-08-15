@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LeaveController;
@@ -72,13 +73,14 @@ Route::controller(StaffController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::get("/", "home")->name("home");
         Route::get("/staff/profile", "profile")->name("staff.profile");
-        Route::post("/staff/edit", "update")->name("staff.update");
         Route::post("/staff/security", "updatePassword")->name("staff.update-password");
         Route::middleware("password.confirm")->group(function() {
             Route::get("/staff/security", "security")
                 ->name("staff.security");
             Route::get("/staff/edit", "edit")
                 ->name("staff.edit");
+            Route::post("/staff/edit", "update")
+                ->name("staff.update");
         });
     });
 });
@@ -88,6 +90,9 @@ Route::controller(MonitorController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::get("/monitor", "show")->name("monitor.show");
         Route::get("/staff/{staff}", "showStaff")->name("monitor.show-staff");
+        Route::get("/monitor/payroll", "payroll")->name("monitor.payroll");
+        Route::get("/staff/{staff}/edit", "editStaff")->name("monitor.edit-staff");
+        Route::post("/staff/{staff}/edit", "updateStaff")->name("monitor.update-staff");
     });
 });
 
@@ -107,8 +112,8 @@ Route::controller(SearchController::class)->group(function () {
 // Clock In
 Route::controller(ClockInController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
-        Route::post("/clock-in", "clockIn")->name("clockin.show");
-        Route::get("/clock-out", "clockOut")->name("clockin.show");
+        Route::post("/clock-in", "clockIn")->name("clockin");
+        Route::post("/clock-out", "clockOut")->name("clockout");
     });
 });
 
@@ -116,3 +121,13 @@ Route::controller(ClockInController::class)->group(function () {
 Route::get("/leave", [LeaveController::class, "show"])
     ->middleware(["auth", "verified"])
     ->name("leave.show");
+
+
+// Task
+Route::controller(TaskController::class)->group(function () {
+    Route::middleware(["auth", "verified"])->group(function () {
+        Route::get("/task", "show")->name("task.show");
+        Route::get("/task/create", "create")->name("task.create");
+        Route::post("/task/create", "store")->name("task.store");
+    });
+});
