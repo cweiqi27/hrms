@@ -4,6 +4,6 @@
     ]) }}
 >
 </div>
-<div class="flex flex-col gap-4 lg:mx-8 max-w-screen-lg">
+<div class="flex flex-col gap-4 lg:mx-auto max-w-screen-lg">
     {{ $slot }}
 </div>
