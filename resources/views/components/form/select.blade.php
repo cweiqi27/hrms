@@ -10,7 +10,7 @@
 <select
     name="{{ $name }}"
     id="{{ $name }}"
-    class="mt-2 mb-4 w-full px-3 py-2 border-2 rounded-md"
+    class="mt-2 mb-8 w-full px-3 py-2 border-2 rounded-md"
     >
     {{ $slot }}
 </select>
