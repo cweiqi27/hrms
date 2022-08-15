@@ -55,6 +55,8 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
         "salary",
         "role",
         "department",
+        "position",
+        "level"
     ];
 
     /**

@@ -12,6 +12,13 @@ class Attendance extends Model
     // Relationships
     protected $primaryKey = "attendance_id";
 
+    protected $fillable = [
+        "date",
+        "clock_in_time",
+        "clock_out_time",
+        "staff_id"
+    ];
+
     public function staff()
     {
         return $this->hasOne(Staff::class, "staff_id");
