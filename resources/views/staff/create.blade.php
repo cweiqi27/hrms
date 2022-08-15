@@ -31,7 +31,7 @@
             </div>
             <form action="{{ route('register.store', [ 'role' => $role ]) }}" method="POST" autocomplete="off">
                 @csrf
-        
+
                 <x-form.input labelName="Name" name="name" />
                 <x-form.input labelName="Email" name="email" type="email" />
                 <x-form.input labelName="Password" name="password" type="password" />
@@ -39,7 +39,7 @@
                 <x-form.input labelName="Contact Number" name="contact_no" type="number" min="0" />
                 <x-form.input labelName="Salary" name="salary" type="number" min="0" />
                 <x-form.input labelName="" name="status" value="Active" type="hidden" />
-                
+
                 @if($role === 'admin')
                     <x-form.input labelName="Department" name="department" value="HR" readonly/>
                 @else
@@ -51,7 +51,15 @@
                         <option value="R&D">Research and Development</option>
                     </x-form.select>
                 @endif
-        
+
+                <x-form.input labelName="Position" name="position" />
+
+                <x-form.select labelName="Level" name="level">
+                    <option value="Junior">Junior</option>
+                    <option value="Mid">Mid</option>
+                    <option value="Senior">Senior</option>
+                </x-form.select>
+
                 <x-button.form-submit>
                     Sign Up
                 </x-button.form-submit>
