@@ -17,10 +17,6 @@ class SearchController extends Controller
 
     public function searchStaffGet(Request $request)
     {
-        // $searchField = $request->validate([
-        //     'search' => ['required'],
-        // ]);
-
         $staff_role = Auth::user()->role;
         $query = $request->input("search");
 
@@ -33,14 +29,17 @@ class SearchController extends Controller
                 "staff_role" => $staff_role,
                 "staff_details" => $staff,
                 "query" => $query,
+                "message" => count($staff) . " record(s) found for " . $query,
+                "message_type" => "info"
             ])
             : view("monitor.search-staff", [
                 "staff_role" => $staff_role,
                 "message" => "No record found.",
+                "message_type" => "error"
             ]);
     }
 
-    public function searchStaffAll(Request $request)
+    public function searchStaffAll()
     {
         $staff_role = Auth::user()->role;
         $staff = Staff::all();
@@ -49,10 +48,13 @@ class SearchController extends Controller
             ? view("monitor.search-staff", [
                 "staff_role" => $staff_role,
                 "staff_details" => $staff,
+                "message" => count($staff) . " record(s) in total.",
+                "message_type" => "info"
             ])
             : view("monitor.search-staff", [
                 "staff_role" => $staff_role,
                 "message" => "No record found.",
+                "message_type" => "error"
             ]);
     }
 }

@@ -19,9 +19,7 @@
         </div>
         <div>
             @unless (!isset($staff_details))
-                @if (isset($query))
-                    <p>Search results for {{ $query }}:</p>
-                @endif
+                <x-alert.message :message="$message" :message_type="$message_type" />
 
                 <x-table titleCsv="Name,Department,Salary,Contact No,Email,Verified,Link">
                     @foreach ($staff_details as $staffs)
@@ -57,9 +55,10 @@
             @endunless
         </div>
 
-        @if(isset($message))
-            {{ $message }}
+        @if(isset($message) && !isset($staff_details))
+            <x-alert.message :message="$message" :message_type="$message_type" />
         @endif
+
     </main>
 
 </x-layout.main-layout>
