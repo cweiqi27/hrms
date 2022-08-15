@@ -15,8 +15,10 @@ return new class extends Migration {
         Schema::create("tasks", function (Blueprint $table) {
             $table->id("task_id");
             $table->text("task_name");
-            $table->datetime("task_start_date");
-            $table->datetime("task_end_date");
+            $table->text("task_status");
+            $table->datetime("task_assign_date");
+            $table->datetime("task_start_date")->nullable();
+            $table->datetime("task_end_date")->nullable();
             $table->foreignId("staff_id")->constraints();
             $table->timestamps();
         });
