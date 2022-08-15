@@ -6,8 +6,8 @@
     >
 
         {{-- MOBILE VIEW --}}
-        <x-layout.header-mobile />
-        
+        <x-layout.header-mobile :role="$role"/>
+
         {{-- DESKTOP/ TABLET VIEW --}}
         <ul class="hidden md:flex gap-5 items-center">
             <li>
@@ -40,20 +40,34 @@
 
         @auth
         <ul class="hidden md:flex gap-5 items-center">
-            {{-- @unless($role === 'admin') --}}
-            <li class="font-medium text-slate-100">
-                {{-- <form action="{{ route('clock-in') }}" method="POST" --}}
-                {{-- >
-                    @csrf
-                    <x-button.submit
-                        class="rounded-md p-2 bg-emerald-600 ring-2 ring-emerald-200 hover:bg-emerald-400
-                            hover:ring-rose-200 transition-colors duration-150"
-                    >
-                        Clock-In
-                    </x-button.submit>
-                </form> --}}
-            </li>
-            {{-- @endunless --}}
+            @unless($role === 'admin')
+                @can('clock-in')
+                    <li class="font-medium text-slate-100">
+                        <form action="{{ route('clockin') }}" method="POST">
+                            @csrf
+                            <x-button.submit
+                                class="rounded-md p-2 bg-emerald-600 ring-2 ring-emerald-200 hover:bg-emerald-400
+                                    hover:ring-rose-200 transition-colors duration-150"
+                            >
+                                Clock-In
+                            </x-button.submit>
+                        </form>
+                    </li>
+                @endcan
+                @cannot('clock-in')
+                    <li class="font-medium text-slate-100">
+                        <form action="{{ route('clockout') }}" method="POST">
+                            @csrf
+                            <x-button.submit
+                                class="rounded-md p-2 bg-emerald-600 ring-2 ring-emerald-200 hover:bg-emerald-400
+                                hover:ring-rose-200 transition-colors duration-150"
+                            >
+                                Clock-Out
+                            </x-button.submit>
+                        </form>
+                    </li>
+                @endcannot
+            @endunless
             <li>
                 <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"

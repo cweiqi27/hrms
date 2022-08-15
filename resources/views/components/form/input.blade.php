@@ -10,7 +10,7 @@
                         outline-none outline-offset-0 focus:outline-none
                         invalid:border-red-500 out-of-range:border-red-500
                         required:border-yellow-500 read-only:bg-indigo-100
-                        peer placeholder-transparent
+                        peer placeholder-transparent caret-indigo-300
                         ',
             'placeholder' => $labelName
             ])
