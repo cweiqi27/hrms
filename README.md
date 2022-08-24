@@ -23,12 +23,12 @@
 - [ionicons](https://ionic.io/ionicons)
 
 ## Prerequisite
-- [Node.js](https://nodejs.org/en/) version > 16.5.4
+- [Node.js](https://nodejs.org/en/) recommended version `>= 16`
 - [Composer](https://getcomposer.org/)
-- [PHP](https://www.php.net/manual/en/install.php)
+- [PHP](https://www.php.net/manual/en/install.php) version `>= 8`
 - [MySQL](https://dev.mysql.com/downloads/installer/) 
 - *Optional: [XAMPP](https://www.apachefriends.org/)*
-> Skip PHP and MySQL if you use XAMPP
+> Skip installing PHP and MySQL independently if you use XAMPP since they're already included
 
 ## Install on your local system
 ### Clone the project
