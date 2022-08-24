@@ -1,0 +1,10 @@
+{
+    "preset": "laravel",
+    "disabled": ["NoInlineVarDocs"],
+    "excluded": ["tests/"],
+    "paths": [
+        {
+            "controllers": ["app/Domain/Http/Controllers"]
+        }
+    ]
+}
