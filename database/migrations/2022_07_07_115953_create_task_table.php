@@ -19,7 +19,8 @@ return new class extends Migration {
             $table->datetime("task_assign_date");
             $table->datetime("task_start_date")->nullable();
             $table->datetime("task_end_date")->nullable();
-            $table->foreignId("staff_id")->constraints();
+            $table->unsignedBigInteger('staff_id');
+            $table->foreign('staff_id')->references('staff_id')->on('staffs');
             $table->timestamps();
         });
     }

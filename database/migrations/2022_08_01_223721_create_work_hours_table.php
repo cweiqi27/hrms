@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->unsignedInteger("weekly_work_hours")->nullable();
             $table->unsignedInteger("yearly_work_hours")->nullable();
             $table->unsignedInteger("accumulative_work_hours");
-            $table->foreignId("staff_id")->constraints();
+            $table->unsignedBigInteger('staff_id');
+            $table->foreign('staff_id')->references('staff_id')->on('staffs');
         });
     }
 

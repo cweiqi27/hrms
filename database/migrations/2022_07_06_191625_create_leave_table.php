@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Staff;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +21,8 @@ return new class extends Migration {
             $table->time("leave_start_time");
             $table->time("leave_end_time");
             $table->string("leave_type", 20);
-            $table->foreignId("staff_id")->constraints();
+            $table->unsignedBigInteger('staff_id');
+            $table->foreign('staff_id')->references('staff_id')->on('staffs');
             $table->timestamps();
         });
     }

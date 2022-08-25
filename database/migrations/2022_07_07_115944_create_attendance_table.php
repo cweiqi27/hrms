@@ -17,7 +17,8 @@ return new class extends Migration {
             $table->date("date");
             $table->time("clock_in_time");
             $table->time("clock_out_time");
-            $table->foreignId("staff_id")->constraints();
+            $table->unsignedBigInteger('staff_id');
+            $table->foreign('staff_id')->references('staff_id')->on('staffs');
             $table->timestamps();
         });
     }
