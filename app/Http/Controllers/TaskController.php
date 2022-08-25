@@ -50,4 +50,53 @@ class TaskController extends Controller
             ])
             ->withErrors('staff_id');
     }
+
+    public function list()
+    {
+        return view('task.show', [
+            'staff' => Auth::user()
+        ]);
+    }
+
+    public function listGet(Request $request)
+    {
+        $task = Task::where('staff_id', '=', $request->get('staff_id'))
+                    ->get();
+
+        return view('task.show', [
+            'staff' => Auth::user(),
+            'task' => $task
+        ]);
+    }
+
+    public function listAll()
+    {
+        if(Auth::user()->role === 'admin') {
+            $managed_staff = Staff::select('staffs.staff_id')
+                ->where('manager_id', Auth::user()->staff_id)
+                ->get('staff_id')
+                ->toArray();
+            $task = Task::select('tasks.*')
+                        ->whereIn('staff_id', $managed_staff)
+                        ->where('task_status', '<>', 'completed' )
+                        ->get();
+        } else {
+            $task = Task::where('staff_id', '=', Auth::user()->staff_id)
+                ->where('task_status', '=', 'assigned' )
+                ->orWhere('task_status', '=', 'accepted')
+                ->orWhere('task_status', '=', 'review')
+                ->get();
+        }
+
+        return view('task.show', [
+            'staff' => Auth::user(),
+            'task' => $task
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        Task::find('');
+        $request->input('task_status');
+    }
 }
