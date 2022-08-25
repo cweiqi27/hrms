@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
@@ -37,7 +37,7 @@ class RegisterController extends Controller
                     ->mixedCase()
                     ->numbers()
                     ->symbols()
-                    ->uncompromised(),
+                    ->uncompromised()
             ],
             "contact_no" => [
                 "required",
@@ -47,10 +47,20 @@ class RegisterController extends Controller
             "status" => ["required", "min:3"],
             "salary" => ["required", "min:3", "gte:0"],
             "department" => ["required"],
+            "position" => ["required"],
+            "level" => ["required"],
         ]);
 
         // Append role to array (admin/employee)
         $formFields["role"] = $role;
+
+        $role === 'employee'
+            ? $formFields["manager_id"] = (
+                Staff::where("role", "=", "admin")
+                    ->get())
+                ->random()
+                ->staff_id
+            : $formFields["manager_id"] = null;
 
         // Hash password
         $formFields["password"] = bcrypt($formFields["password"]);

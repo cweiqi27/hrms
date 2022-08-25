@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string("password");
             $table->rememberToken();
             $table->string("role");
+            $table->integer("manager_id")->nullable();
             $table->timestamps();
         });
     }
