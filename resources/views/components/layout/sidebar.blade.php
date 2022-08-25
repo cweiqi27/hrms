@@ -1,7 +1,7 @@
 @props(['sidebarLinkType'])
 
 @if(isset($sidebarLinkType))
-<aside class="z-40 hidden lg:block fixed inset-0 top-[3.53rem] right-auto w-44 px-4 bg-slate-50">
+<aside class="z-40 hidden lg:block absolute inset-0 top-[3.53rem] right-auto w-44 px-4 bg-slate-50">
     <nav class="flex flex-col shrink-0 gap-2 my-4">
         <h1 class="uppercase text-slate-700 font-bold cursor-default">{{ $sidebarLinkType }}</h1>
         @foreach (Helper::links($sidebarLinkType) as $link => $name)
