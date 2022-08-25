@@ -4,8 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use App\Models\Employee;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Leave>
  */
@@ -16,7 +14,7 @@ class LeaveFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             "leave_start_date" => $this->faker->date("Y-m-d"),
