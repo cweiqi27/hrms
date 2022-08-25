@@ -5,7 +5,7 @@
         @click="open = false"
         x-show="open"
         x-transition
-        class='fixed bottom-0 right-0 -translate-x-4 -translate-y-6
+        class='z-50 fixed bottom-0 right-0 -translate-x-4 -translate-y-6
                 rounded-full py-2 px-4
                 bg-white shadow-sm shadow-gray-300
                 hover:-translate-y-8 hover:-translate-x-6 hover:shadow-md
@@ -26,7 +26,7 @@
         @click="open = false"
         x-show="open"
         x-transition
-        class='fixed bottom-0 right-0 -translate-x-4 -translate-y-6
+        class='z-50 fixed bottom-0 right-0 -translate-x-4 -translate-y-6
                 rounded-full py-2 px-4
                 bg-white shadow-sm shadow-gray-300
                 hover:-translate-y-8 hover:-translate-x-6 hover:shadow-md
@@ -47,7 +47,7 @@
         @click="open = false"
         x-show="open"
         x-transition
-        class='fixed bottom-0 right-0 -translate-x-4 -translate-y-6
+        class='z-50 fixed bottom-0 right-0 -translate-x-4 -translate-y-6
                 rounded-full py-2 px-4
                 bg-white shadow-sm shadow-gray-300
                 hover:-translate-y-8 hover:-translate-x-6 hover:shadow-md
@@ -68,7 +68,7 @@
         @click="open = false"
         x-show="open"
         x-transition
-        class='fixed bottom-0 right-0 -translate-x-4 -translate-y-6
+        class='z-50 fixed bottom-0 right-0 -translate-x-4 -translate-y-6
                 rounded-full py-2 px-4
                 bg-white shadow-sm shadow-gray-300
                 hover:-translate-y-8 hover:-translate-x-6 hover:shadow-md
