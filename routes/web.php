@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\TaskController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClockInController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ClockInController;
 use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Route;
 
 // Register
 Route::controller(RegisterController::class)->group(function () {
@@ -129,5 +129,8 @@ Route::controller(TaskController::class)->group(function () {
         Route::get("/task", "show")->name("task.show");
         Route::get("/task/create", "create")->name("task.create");
         Route::post("/task/create", "store")->name("task.store");
+        Route::get("/task/list", "list")->name("task.list");
+        Route::get("/task/list/get/{staff}", "listGet")->name("task.list-get");
+        Route::get("/task/list/all", "listAll")->name("task.list-all");
     });
 });
