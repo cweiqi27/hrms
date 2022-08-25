@@ -9,7 +9,6 @@ class Task extends Model
 {
     use HasFactory;
 
-    // Relationships
     protected $primaryKey = "task_id";
 
     protected $fillable = [
@@ -21,6 +20,7 @@ class Task extends Model
         'staff_id'
     ];
 
+    // Relationships
     public function staff()
     {
         return $this->hasOne(Staff::class, "staff_id");

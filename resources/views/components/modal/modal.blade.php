@@ -4,10 +4,9 @@
     x-cloak
     x-transition.opacity
     x-transition:leave.duration.150ms
-
 >
     <div
-        class="flex justify-center items-center w-full h-full"
+        class="grid place-items-center w-full h-full"
         x-show="isModalOpen"
         x-cloak
         x-transition

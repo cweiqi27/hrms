@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Leave;
 use App\Models\Staff;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
@@ -94,15 +94,17 @@ class StaffController extends Controller
                 "min:9",
                 Rule::unique("staffs", "contact_no"),
             ],
-            'department' => ['required']
+            'email' => ['required']
         ]);
 
         $staff->name = $request->input('name');
         $staff->contact_no = $request->input('contact_no');
-        $staff->department = $request->input('department');
+        $staff->email = $request->input('email');
+
+        if ($request->input('email') !== Auth::user()->email)
+            $staff->email_verified_at = null;
 
         $staff->save();
-
 
         return back()
             ->withErrors('Error')

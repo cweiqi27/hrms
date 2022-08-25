@@ -17,7 +17,7 @@
                 </x-subheading>
             </div>
         </section>
-        
+
         <x-layout.index-main>
             <x-card.nav-card
                 route="task.show"

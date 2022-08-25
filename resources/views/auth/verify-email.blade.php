@@ -1,5 +1,4 @@
 <x-layout.main-layout title="Verify Email" type="auth">
-
     <x-layout.form-layout class="flex-col items-start gap-8 px-2 sm:px-12 h-[34rem]">
         <div class="flex gap-4 items-end">
             <x-title name="Verify Email" />
@@ -18,8 +17,5 @@
                 Resend verification link
             </x-button.form-submit>
         </form>
-        <x-alert.message />
     </x-layout.form-layout>
-
-
 </x-layout.main-layout>
