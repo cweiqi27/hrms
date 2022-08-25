@@ -23,7 +23,7 @@
 
                 <x-table titleCsv="Name,Department,Salary,Contact No,Email,Verified,Link">
                     @foreach ($staff_details as $staffs)
-                    <tr class="odd:bg-slate-100 even:bg-slate-200">
+                    <tr class="odd:bg-emerald-50 even:bg-emerald-100">
                         <td class="p-3 ">
                             <a
                                 href="{{ route('monitor.show-staff', $staffs) }}"

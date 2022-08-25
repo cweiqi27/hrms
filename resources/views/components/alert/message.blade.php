@@ -18,7 +18,7 @@
         <ion-icon
             name="close-outline"
             @click="open = false"
-            class="self-center text-2xl hover:text-red-500 cursor-pointer"
+            class="self-center text-2xl hover:text-gray-700 cursor-pointer"
         ></ion-icon>
     </div>
 
@@ -40,7 +40,7 @@
         <ion-icon
             name="close-outline"
             @click="open = false"
-            class="self-center text-2xl hover:text-red-500 cursor-pointer"
+            class="self-center text-2xl hover:text-gray-700 cursor-pointer"
         ></ion-icon>
     </div>
 
@@ -62,7 +62,7 @@
         <ion-icon
             name="close-outline"
             @click="open = false"
-            class="self-center text-2xl hover:text-red-500 cursor-pointer"
+            class="self-center text-2xl hover:text-gray-700 cursor-pointer"
         ></ion-icon>
     </div>
 
@@ -84,7 +84,7 @@
         <ion-icon
             name="close-outline"
             @click="open = false"
-            class="self-center text-2xl hover:text-red-500 cursor-pointer"
+            class="self-center text-2xl hover:text-gray-700 cursor-pointer"
         ></ion-icon>
     </div>
 

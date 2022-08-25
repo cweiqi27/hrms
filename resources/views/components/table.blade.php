@@ -6,7 +6,7 @@
 
 <div class="flex justify-center rounded-lg mt-4 p-2 shadow-lg shadow-gray-400">
     <table class="table-auto border-separate">
-        <thead class="bg-slate-700 text-slate-50">
+        <thead class="bg-emerald-700 text-emerald-50">
             <tr>
                 @foreach ($title as $titles)
                     <th class="p-3 ">{{ $titles }}</th>
