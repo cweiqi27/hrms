@@ -30,10 +30,8 @@ class AuthController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with(
-            "message",
-            "A new verification link has been sent!"
-        );
+        return back()
+            ->with("success", "A new verification link has been sent!");
     }
 
     // Forgot password page
