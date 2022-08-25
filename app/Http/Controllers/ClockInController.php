@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ClockInController extends Controller
@@ -18,13 +18,13 @@ class ClockInController extends Controller
             return back()
                 ->with([
                     'staff' => Auth::user()->staff_id,
-                    'message' => 'You clocked-in.'
+                    'success' => 'You clocked-in.'
                 ]);
         } else {
             return back()
                 ->with([
                     'staff' => Auth::user()->staff_id,
-                    'message' => 'You have ' . $diff_hour_next . ' hours left before you can clock in.'
+                    'info' => 'You still have ' . $diff_hour_next . ' hours before you can clock in.'
                 ]);
         }
 
@@ -36,24 +36,26 @@ class ClockInController extends Controller
 
         if($request->session()->has('clock-in') && Carbon::isBusinessClosed()) {
 
-            $request->session()->put('clock-out', Carbon::now()->toDateTimeString());
             Attendance::create([
                 'date' => Carbon::now()->toDateString(),
                 'clock_in_time' => $request->session()->get('clock-in'),
-                'clock_out_time' => $request->session()->get('clock-out'),
+                'clock_out_time' => Carbon::now()->toDateTimeString(),
                 'staff_id' => Auth::user()->staff_id
             ]);
+
+            $request->session()->forget('clock-in');
+
 
             return back()
                 ->with([
                     'staff' => Auth::user()->staff_id,
-                    'message' => 'You clocked-out.'
+                    'success' => 'You clocked-out.'
                 ]);
         } else {
             return back()
                 ->with([
                     'staff' => Auth::user()->staff_id,
-                    'message' => 'You have ' . $diff_hour_next . ' hours left before you can clock out.'
+                    'info' => 'You still have ' . $diff_hour_next . ' hours before you can clock out.'
                 ]);
         }
     }
