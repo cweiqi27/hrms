@@ -20,8 +20,8 @@ class SearchController extends Controller
         $staff_role = Auth::user()->role;
         $query = $request->input("search");
 
-        $staff = Staff::where("name", "LIKE", "%" . $query . "%")
-            ->orWhere("email", "LIKE", "%" . $query . "%")
+        $staff = Staff::where("staff_id", "LIKE", "%" . $query . "%")
+            ->orWhere("name", "LIKE", "%" . $query . "%")
             ->get();
 
         return count($staff) > 0 && $query !== null
@@ -35,7 +35,7 @@ class SearchController extends Controller
             : view("monitor.search-staff", [
                 "staff_role" => $staff_role,
                 "message" => "No record found.",
-                "message_type" => "error"
+                "message_type" => "warning"
             ]);
     }
 
@@ -54,7 +54,7 @@ class SearchController extends Controller
             : view("monitor.search-staff", [
                 "staff_role" => $staff_role,
                 "message" => "No record found.",
-                "message_type" => "error"
+                "message_type" => "warning"
             ]);
     }
 }
