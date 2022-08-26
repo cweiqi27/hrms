@@ -20,10 +20,12 @@ class TaskController extends Controller
 
     public function create()
     {
-        $employees = Staff::where('role', '=' , 'employee')->get();
+        $managed_staff = Staff::select('staffs.*')
+            ->where('manager_id', Auth::user()->staff_id)
+            ->get();
         return view("task.create", [
             "staff" => Auth::user(),
-            "employees" => $employees
+            "employees" => $managed_staff
         ]);
     }
 
@@ -53,31 +55,45 @@ class TaskController extends Controller
 
     public function list()
     {
+        $managed_staff = Staff::select('staffs.*')
+            ->where('manager_id', Auth::user()->staff_id)
+            ->get();
         return view('task.show', [
-            'staff' => Auth::user()
+            'staff' => Auth::user(),
+            'staff_list' => $managed_staff
         ]);
     }
 
     public function listGet(Request $request)
     {
-        $task = Task::where('staff_id', '=', $request->get('staff_id'))
-                    ->get();
+        $task = Task::where('staff_id', '=', $request->get('employee'))
+                        ->where('task_status', '<>', 'completed' )
+                        ->get();
+        $managed_staff = Staff::select('staffs.*')
+            ->where('manager_id', Auth::user()->staff_id)
+            ->get();
 
         return view('task.show', [
             'staff' => Auth::user(),
-            'task' => $task
+            'task' => $task,
+            'staff_list' => $managed_staff,
+            'test' => $request->get('staff_id')
         ]);
     }
 
     public function listAll()
     {
+        $managed_staff = Staff::select('staffs.*')
+            ->where('manager_id', Auth::user()->staff_id)
+            ->get();
+
         if(Auth::user()->role === 'admin') {
-            $managed_staff = Staff::select('staffs.staff_id')
+            $managed_staff_id = Staff::select('staffs.staff_id')
                 ->where('manager_id', Auth::user()->staff_id)
                 ->get('staff_id')
                 ->toArray();
             $task = Task::select('tasks.*')
-                        ->whereIn('staff_id', $managed_staff)
+                        ->whereIn('staff_id', $managed_staff_id)
                         ->where('task_status', '<>', 'completed' )
                         ->get();
         } else {
@@ -90,7 +106,8 @@ class TaskController extends Controller
 
         return view('task.show', [
             'staff' => Auth::user(),
-            'task' => $task
+            'task' => $task,
+            'staff_list' => $managed_staff
         ]);
     }
 
