@@ -130,7 +130,7 @@ Route::controller(TaskController::class)->group(function () {
         Route::get("/task/create", "create")->name("task.create");
         Route::post("/task/create", "store")->name("task.store");
         Route::get("/task/list", "list")->name("task.list");
-        Route::get("/task/list/get/{staff}", "listGet")->name("task.list-get");
-        Route::get("/task/list/all", "listAll")->name("task.list-all");
+        Route::any("/task/list/get/{staff}", "listGet")->name("task.list-get");
+        Route::any("/task/list/all", "listAll")->name("task.list-all");
     });
 });

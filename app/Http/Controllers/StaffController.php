@@ -48,13 +48,12 @@ class StaffController extends Controller
             ? $greet = "morning"
             : $greet = "afternoon";
 
-
         // Greet message
-        if (Carbon::isBusinessClosed()) {
-            $message = "Hey, " . Auth::user()->name . ". Take a rest.";
-        } else {
-            $message = "Good " . $greet . ", " . Auth::user()->name . ".";
-        }
+        Carbon::isBusinessClosed()
+            ? $message = "Hey, " . Auth::user()->name . ". Take a rest."
+            : $message = "Good " . $greet . ", " . Auth::user()->name . ".";
+
+
 
         return view("staff.index", [
             "staff" => Auth::user(),

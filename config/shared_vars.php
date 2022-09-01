@@ -16,7 +16,7 @@ return [
     'taskLinksCsv-admin' => 'Create,Review',
     'taskLinksHref-admin' => [
         "0" => "task.create",
-        "1" => "monitor.show",
+        "1" => "task.list",
     ],
     'taskLinksCsv-employee' => 'Create,Review',
     'taskLinksHref-employee' => [
@@ -26,6 +26,6 @@ return [
     'monitorLinksCsv-employee' => 'Performance,Payroll',
     'monitorLinksHref-employee' => [
         "0" => "task.create",
-        "1" => "monitor.show",
+        "1" => "task.show",
     ],
 ];
