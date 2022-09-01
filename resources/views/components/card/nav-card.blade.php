@@ -19,8 +19,7 @@
     <div class="text-right w-full px-4">
         <ion-icon
             name="{{ $icon }}"
-            class="text-[6rem]"
-
+            class="text-[6rem] pointer-events-none"
         >
         </ion-icon>
     </div>
