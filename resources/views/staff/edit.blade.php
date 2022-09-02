@@ -20,7 +20,8 @@
             >
                 <x-edit-field :val="$staff->name" label_name="Name" name="name" type="text" />
                 <x-edit-field :val="$staff->contact_no" label_name="Contact No." name="contact_no" type="number" />
-                <x-edit-field :val="$department" label_name="Department" name="department" type="text" />
+                <x-edit-field :val="$staff->email" label_name="Email" name="email" type="text" />
+
                 <x-button.form-submit>Edit</x-button.form-submit>
             </div>
 
