@@ -66,19 +66,32 @@ class TaskController extends Controller
 
     public function listGet(Request $request)
     {
-        $task = Task::where('staff_id', '=', $request->get('employee'))
-                        ->where('task_status', '<>', 'completed' )
-                        ->get();
         $managed_staff = Staff::select('staffs.*')
             ->where('manager_id', Auth::user()->staff_id)
             ->get();
 
+        $task = Task::where('staff_id', '=', $request->get('employee'))
+                        ->where('task_status', '<>', 'completed' )
+                        ->get();
+
+
+        $employee = Staff::where('staff_id', '=', $request->get('employee'))
+                        ->get();
+
+        count($task) > 0
+            ? $message_type = 'info'
+            : $message_type = 'warning';
+
+
         return view('task.show', [
-            'staff' => Auth::user(),
-            'task' => $task,
-            'staff_list' => $managed_staff,
-            'test' => $request->get('staff_id')
-        ]);
+                'staff' => Auth::user(),
+                'task' => $task,
+                'task_count' => count($task),
+                'staff_list' => $managed_staff,
+                'test' => $request->get('staff_id'),
+                'employee' => $employee,
+                'message_type' => $message_type
+            ]);
     }
 
     public function listAll()
