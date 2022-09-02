@@ -12,7 +12,7 @@
 
             <form action="{{ route('search.staff.all') }}" method="GET">
                 @csrf
-                <x-button.submit class="">
+                <x-button.submit class="rounded-lg p-2 text-emerald-50 bg-emerald-500 hover:bg-emerald-400">
                     Show all
                 </x-button.submit>
             </form>
