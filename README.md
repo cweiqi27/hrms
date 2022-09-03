@@ -99,4 +99,4 @@ Also remember to fill up your database info (database, username, password) in **
 
 3. By default, [MailHog](https://github.com/mailhog/MailHog) is used as the fake SMTP server for the email features. You could opt for other alternatives such as [MailTrap](https://mailtrap.io/).   
 
-4. We're using Laravel Mix for the app, that's why the majority of files are .js
+4. Since Laravel Mix is being used as the wrapper for the app, hence the majority of the files are .js.
