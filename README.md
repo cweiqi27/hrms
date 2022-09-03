@@ -98,3 +98,5 @@ Also remember to fill up your database info (database, username, password) in **
 2. The app is using [BrowserSync](https://laravel-mix.com/docs/main/browsersync), so when you run `npm run watch`, a new tab will be opened on a different port. On the new tab, when you make changes to the files, the browser will reload automatically. To modify, go to `webpack.mix.js` and change the settings to your liking. Check the [documentation](https://browsersync.io/docs/options/) for more information.
 
 3. By default, [MailHog](https://github.com/mailhog/MailHog) is used as the fake SMTP server for the email features. You could opt for other alternatives such as [MailTrap](https://mailtrap.io/).   
+
+4. We're using Laravel Mix for the app, that's why the majority of files are .js
