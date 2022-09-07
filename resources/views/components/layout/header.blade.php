@@ -11,14 +11,21 @@
         {{-- DESKTOP/ TABLET VIEW --}}
         <ul class="hidden md:flex gap-5 items-center">
             <li>
-                <a href="/">
+                <a href="{{ route('home') }}">
                     <img src="{{ asset('img/HRMS-logo_transparent.png') }}" alt="HRMS logo" class="max-w-[3.5rem]">
                 </a>
             </li>
             <li>
                 <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
-                    href="/task">
+                    href="{{ route('home') }}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a
+                    class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"
+                    href="{{ route('task.show') }}">
                         Task
                 </a>
             </li>
