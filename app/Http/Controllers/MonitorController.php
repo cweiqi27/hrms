@@ -56,11 +56,4 @@ class MonitorController extends Controller
             ->withErrors('Error')
             ->withMessage('Profile successfully updated.');
     }
-
-    public function payroll()
-    {
-        return view("monitor.payroll", [
-            "staff" => Auth::user()
-        ]);
-    }
 }
