@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
+use App\Models\WorkHours;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,6 +68,11 @@ class RegisterController extends Controller
 
         // Create staff
         $staff = Staff::create($formFields);
+
+        // Create work hours row
+        WorkHours::create([
+            'staff_id' => $staff->staff_id
+        ]);
 
         // Login
         Auth::login($staff);
