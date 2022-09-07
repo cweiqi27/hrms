@@ -2,7 +2,7 @@
     <x-layout.index-layout>
         <x-layout.index-heading
             heading="Monitor"
-            subheading="Make sure everyone stays productive, we got work to do!"
+            subheading="Making sure everyone stays productive."
         />
         <x-layout.index-main>
             <x-card.nav-card
@@ -12,7 +12,7 @@
                 icon="search-circle-outline"
             />
             <x-card.nav-card
-                route="search.staff"
+                route="payroll.show"
                 title="Payroll"
                 description="Manage employee pay"
                 icon="cash-outline"
