@@ -33,6 +33,11 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
         return $this->hasMany(Attendance::class, "staff_id");
     }
 
+    public function workHours()
+    {
+        return $this->hasOne(WorkHours::class, "staff_id");
+    }
+
     // Password reset notification
     public function sendPasswordResetNotification($token)
     {
