@@ -9,7 +9,7 @@ return [
     'monitorLinksCsv-admin' => 'Search Staff,Payroll,Attendance,Performance',
     'monitorLinksHref-admin' => [
         "0" => "search.staff",
-        "1" => "home",
+        "1" => "payroll.show",
         "2" => "monitor.show",
         "3" => "leave.show",
     ],
