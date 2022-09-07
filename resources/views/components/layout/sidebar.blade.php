@@ -7,20 +7,19 @@
         @foreach (Helper::links($sidebarLinkType) as $link => $name)
             <a
                 href="{{ route($link) }}"
-                class="{{ strcmp(Route::currentRouteName(), $link) === 0
+                class="{{ str_contains(Route::currentRouteName(), $link)
                 ? 'group px-4 py-2 border-l-2
                         border-l-emerald-800 hover:cursor-pointer duration-150'
                 : 'group px-4 py-2 border-l-2
                         hover:border-l-emerald-800 hover:cursor-pointer duration-150'
                         }}"
             >
-                <h2 class="{{ strcmp(Route::currentRouteName(), $link) === 0
+                <h2 class="{{ str_contains(Route::currentRouteName(), $link)
                                 ? 'font-semibold text-slate-600
                                     translate-x-1 ease-in-out transition-all duration-150'
                                 : 'font-medium text-slate-500 group-hover:text-emerald-600
                                     group-hover:translate-x-1 transition-all ease-in-out duration-150'
                                     }}"
-
                 >
                     {{ $name }}
                 </h2>
