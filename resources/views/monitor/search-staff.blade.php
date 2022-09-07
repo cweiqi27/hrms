@@ -1,6 +1,6 @@
 <x-layout.main-layout title="Monitor" type="dashboard" :role="$staff_role" sidebarLinkType="monitor">
-    <main class="flex flex-col gap-4 mx-auto">
-        <div class="flex flex-col gap-4 mt-10 px-2 sm:px-6">
+    <main class="flex flex-col gap-4">
+        <section class="flex flex-col gap-4 mt-10 px-2 sm:px-6 md:mx-auto">
             <x-search
                 route="search.staff.get"
                 name="search"
@@ -16,8 +16,8 @@
                     Show all
                 </x-button.submit>
             </form>
-        </div>
-        <div>
+        </section>
+        <section class="md:mx-auto">
             @unless (!isset($staff_details))
                 <x-alert.message :message="$message" :message_type="$message_type" />
 
@@ -44,7 +44,7 @@
                         <td class="p-3  text-2xl text-center">
                             <a
                                 href="{{ route('monitor.show-staff', $staffs) }}"
-                                class="hover:text-emerald-500"
+                                class="hover:text-gray-400"
                             >
                                 <ion-icon name="link-outline" class="pointer-events-none"></ion-icon>
                             </a>
@@ -53,7 +53,7 @@
                     @endforeach
                 </x-table>
             @endunless
-        </div>
+        </section>
 
         @if(isset($message) && !isset($staff_details))
             <x-alert.message :message="$message" :message_type="$message_type" />

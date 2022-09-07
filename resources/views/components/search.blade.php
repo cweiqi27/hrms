@@ -10,7 +10,7 @@
             >
                 {{ $labelName }}
             </label>
-            <div class="flex w-[60rem]">
+            <div class="flex sm:w-[35rem] lg:w-[50rem]">
                 <input
                     id="{{ $name }}"
                     name="{{ $name }}"
