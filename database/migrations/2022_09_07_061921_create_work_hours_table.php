@@ -14,12 +14,12 @@ return new class extends Migration {
     {
         Schema::create("work_hours", function (Blueprint $table) {
             $table->id("work_hours_id");
-            $table->unsignedInteger("daily_work_hours");
-            $table->unsignedInteger("weekly_work_hours")->nullable();
+            $table->unsignedInteger("monthly_work_hours")->nullable();
             $table->unsignedInteger("yearly_work_hours")->nullable();
-            $table->unsignedInteger("accumulative_work_hours");
-            $table->unsignedBigInteger('staff_id');
+            $table->unsignedInteger("accumulative_work_hours")->nullable();
+            $table->unsignedBigInteger('staff_id')->unique();
             $table->foreign('staff_id')->references('staff_id')->on('staffs');
+            $table->timestamps();
         });
     }
 
