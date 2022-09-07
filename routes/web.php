@@ -5,6 +5,7 @@ use App\Http\Controllers\ClockInController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonitorController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StaffController;
@@ -90,7 +91,6 @@ Route::controller(MonitorController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::get("/monitor", "show")->name("monitor.show");
         Route::get("/staff/{staff}", "showStaff")->name("monitor.show-staff");
-        Route::get("/monitor/payroll", "payroll")->name("monitor.payroll");
         Route::get("/staff/{staff}/edit", "editStaff")->name("monitor.edit-staff");
         Route::post("/staff/{staff}/edit", "updateStaff")->name("monitor.update-staff");
     });
@@ -133,4 +133,11 @@ Route::controller(TaskController::class)->group(function () {
         Route::any("/task/list/get/{staff}", "listGet")->name("task.list-get");
         Route::any("/task/list/all", "listAll")->name("task.list-all");
     });
+});
+
+// Payroll
+Route::controller(PayrollController::class)->group(function () {
+    Route::middleware(["auth", "verified"])->group(function() {
+        Route::get("/payroll", "show")->name("payroll.show");
+    }) ;
 });

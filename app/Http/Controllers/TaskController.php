@@ -25,7 +25,7 @@ class TaskController extends Controller
             ->get();
         return view("task.create", [
             "staff" => Auth::user(),
-            "employees" => $managed_staff
+            "managed_staff" => $managed_staff
         ]);
     }
 
@@ -58,9 +58,10 @@ class TaskController extends Controller
         $managed_staff = Staff::select('staffs.*')
             ->where('manager_id', Auth::user()->staff_id)
             ->get();
+
         return view('task.show', [
             'staff' => Auth::user(),
-            'staff_list' => $managed_staff
+            'managed_staff' => $managed_staff
         ]);
     }
 
@@ -74,23 +75,16 @@ class TaskController extends Controller
                         ->where('task_status', '<>', 'completed' )
                         ->get();
 
-
         $employee = Staff::where('staff_id', '=', $request->get('employee'))
                         ->get();
-
-        count($task) > 0
-            ? $message_type = 'info'
-            : $message_type = 'warning';
-
 
         return view('task.show', [
                 'staff' => Auth::user(),
                 'task' => $task,
                 'task_count' => count($task),
-                'staff_list' => $managed_staff,
-                'test' => $request->get('staff_id'),
+                'managed_staff' => $managed_staff,
                 'employee' => $employee,
-                'message_type' => $message_type
+                'message_type' => 'info'
             ]);
     }
 
@@ -120,7 +114,10 @@ class TaskController extends Controller
         return view('task.show', [
             'staff' => Auth::user(),
             'task' => $task,
-            'staff_list' => $managed_staff
+            'task_count' => count($task),
+            'managed_staff' => $managed_staff,
+            'message_type' => 'info',
+            'is_list_all' => true
         ]);
     }
 
