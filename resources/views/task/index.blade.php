@@ -26,16 +26,10 @@
                 />
             @else
                 <x-card.nav-card
-                    route="task.create"
+                    route="task.list"
                     title="Task List"
-                    description="Create task for employees to perform."
-                    icon="search-circle-outline"
-                />
-                <x-card.nav-card
-                    route="task.show"
-                    title="Create Task"
-                    description="Create task for employees to perform."
-                    icon="search-circle-outline"
+                    description="List of tasks assigned to be completed"
+                    icon="clipboard-outline"
                 />
             @endif
         </x-layout.index-main>
