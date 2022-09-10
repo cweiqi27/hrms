@@ -1,6 +1,6 @@
-<x-layout.card {{ $attributes -> merge([
-    'class' => 'flex-col items-center gap-4 rounded'
+<div {{ $attributes -> merge([
+    'class' => 'flex flex-col gap-4 rounded py-6'
     ]) }}
 >
     {{ $slot }}
-</x-layout.card>
+</div>
