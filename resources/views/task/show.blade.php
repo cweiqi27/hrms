@@ -2,6 +2,7 @@
 
     <section class="flex flex-col gap-4">
 
+        {{--Admin--}}
         @unless($staff->role === 'employee')
             <x-title name="Review Task" class="mx-4 mt-2"/>
             {{--Search--}}
@@ -19,10 +20,6 @@
                         <x-button.form-submit>
                             Get Task
                         </x-button.form-submit>
-                </form>
-                <form action="{{ route('task.list-all') }}" method="GET">
-                    @csrf
-                    <x-button.form-submit>All</x-button.form-submit>
                 </form>
                 @endif
             </section>
@@ -49,7 +46,7 @@
                     <x-alert.message :message="$message" :message_type="$message_type" />
 
                     {{--Task Cards--}}
-                    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 grid-flow-rows gap-2 my-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 grid-flow-rows gap-2 my-8">
                         @foreach ($task as $tasks)
                             @php
                                 $date = \Carbon\Carbon::parse($tasks->task_assign_date)
@@ -96,7 +93,7 @@
                                         <input type="hidden" name="task" value="{{ $tasks->task_id }}">
                                         <input type="hidden" name="status" value="completed">
                                         <x-button.submit>
-                                            Accept
+                                            <ion-icon name="checkmark-circle-sharp" class="text-green-400 hover:text-green-300 text-xl" />
                                         </x-button.submit>
                                     </form>
                                     <form action="{{ route('task.update') }}" method="POST">
@@ -104,7 +101,7 @@
                                         <input type="hidden" name="task" value="{{ $tasks->task_id }}">
                                         <input type="hidden" name="status" value="accepted">
                                         <x-button.submit>
-                                            Deny
+                                            <ion-icon name="close-circle-sharp" class="text-amber-400 hover:text-amber-300 text-xl" />
                                         </x-button.submit>
                                     </form>
                                 @endif
@@ -112,7 +109,7 @@
                                     @csrf
                                     <input type="hidden" name="task" value="{{ $tasks->task_id }}">
                                     <x-button.submit>
-                                        Delete
+                                        <ion-icon name="trash-bin-sharp" class="text-red-400 hover:text-red-300 text-xl" />
                                     </x-button.submit>
                                 </form>
                             </span>
@@ -121,6 +118,7 @@
                     </div>
                 @endunless
             </section>
+        {{--Employee--}}
         @else
             <x-title name="Task List" class="mx-4 mt-2"/>
             <section class="mx-4">
@@ -138,7 +136,7 @@
                 <x-alert.message :message="$message" :message_type="$message_type" />
 
                 {{--Task Cards--}}
-                <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 grid-flow-rows gap-2 my-8">
+                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 grid-flow-rows gap-2 my-8">
                     @foreach ($task as $tasks)
                         @php
                             $date = \Carbon\Carbon::parse($tasks->task_assign_date)
@@ -176,7 +174,7 @@
                                         <input type="hidden" name="task" value="{{ $tasks->task_id }}">
                                         <input type="hidden" name="status" value="accepted">
                                         <x-button.submit>
-                                            Accept
+                                            <ion-icon name="checkmark-circle-sharp" class="text-green-400 hover:text-green-300 text-xl" />
                                         </x-button.submit>
                                     </form>
                                 @elseif($tasks->task_status === 'accepted')
@@ -185,9 +183,11 @@
                                         <input type="hidden" name="task" value="{{ $tasks->task_id }}">
                                         <input type="hidden" name="status" value="review">
                                         <x-button.submit>
-                                            Review
+                                            <ion-icon name="book" class="text-fuchsia-400 hover:text-fuchsia-300 text-xl" />
                                         </x-button.submit>
                                     </form>
+                                @elseif($tasks->task_status === 'review')
+                                    <ion-icon name="reload-outline" class="text-slate-50 text-xl animate-spin" />
                                 @endif
                             </span>
                         </x-card.listing-card>
