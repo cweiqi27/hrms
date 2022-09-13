@@ -107,7 +107,7 @@ class StaffController extends Controller
 
         return back()
             ->withErrors('Error')
-            ->withMessage('Profile successfully updated.');
+            ->withSuccess('Profile successfully updated.');
 
     }
 

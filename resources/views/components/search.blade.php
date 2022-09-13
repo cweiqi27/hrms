@@ -14,7 +14,7 @@
                 <input
                     id="{{ $name }}"
                     name="{{ $name }}"
-                    class="mb-0 w-full px-3 py-2 border-2 rounded-md
+                    class="mb-0 w-full px-3 py-2 border-2 rounded-l-md
                                 outline-none outline-offset-0 focus:outline-none
                                 invalid:border-red-500 out-of-range:border-red-500
                                 required:border-yellow-500 caret-indigo-300"

@@ -9,6 +9,8 @@ class WorkHours extends Model
 {
     use HasFactory;
 
+    protected $table = "work_hours";
+
     protected $primaryKey = "work_hours_id";
 
     protected $fillable = [
