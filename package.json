@@ -20,6 +20,7 @@
         "tailwindcss": "^3.1.4"
     },
     "dependencies": {
+        "alpinejs": "^3.10.3",
         "fullcalendar": "^5.11.0"
     }
 }
