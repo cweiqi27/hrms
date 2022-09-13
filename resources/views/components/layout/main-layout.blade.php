@@ -12,15 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="shortcut icon" href="img/HRMS-icon.ico" type="image/x-icon">
-    <link href='fullcalendar/main.css' rel='stylesheet' />
+    <link rel="shortcut icon" href="{{ asset('img/HRMS-icon.ico') }}" type="image/x-icon">
 
     @push('scripts')
         <script src="{{ asset('js/app.js') }}"></script>
-        <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+{{--        <link href='fullcalendar/main.css' rel='stylesheet' />--}}
 {{--        <script src='fullcalendar/main.js'></script>--}}
 {{--        <script>--}}
 {{--            document.addEventListener('DOMContentLoaded', () => {--}}
