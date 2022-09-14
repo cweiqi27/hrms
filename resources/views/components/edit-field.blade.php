@@ -1,21 +1,9 @@
 @props(['val', 'label_name', 'name', 'type'])
+@php
+    $fieldVal = "'" . $val . "'";
+@endphp
 <div
-    x-data="{
-                val: '<?= $val ?>',
-                isEditing: false,
-                toggleEditingState() {
-                    this.isEditing = !this.isEditing;
-
-                    if (this.isEditing) {
-                        this.$nextTick(() => {
-                            this.$refs.input.focus();
-                        })
-                    }
-                },
-                disableEditing() {
-                    this.isEditing = false;
-                }
-            }"
+    x-data="editField(<?= $fieldVal ?>)"
     class="flex flex-col"
 >
     <label for="{{ $name }}">
@@ -26,8 +14,8 @@
             @click.prevent
             @dblclick="toggleEditingState"
             id="{{ $name }}"
-            type="{{ $type }}"
             name="{{ $name }}"
+            type="{{ $type }}"
             x-show="!isEditing"
             x-model="val"
             class="bg-white focus:outline-none border border-gray-300
@@ -39,8 +27,8 @@
             @keydown.enter="disableEditing"
             @keydown.window.escape="disableEditing"
             id="{{ $name }}"
-            type="{{ $type }}"
             name="{{ $name }}"
+            type="{{ $type }}"
             x-show="isEditing"
             x-model="val"
             x-ref="input"
