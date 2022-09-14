@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string("status", 10);
             $table->unsignedDecimal("salary", $precision = 15, $scale = 2);
             $table->string("department", 20);
-            $table->string("position", 50);
+            $table->string("position", 100);
             $table->string("level", 20);
             $table->string("password");
             $table->rememberToken();
