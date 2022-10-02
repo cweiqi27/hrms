@@ -24,13 +24,14 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $request->get("remember_me"))) {
             $request->session()->regenerate();
 
-            return redirect()->intended("/");
+            return redirect()->intended("/")->withSuccess("Login successful.");
         }
 
         return back()
             ->withErrors([
                 "password" => "Invalid Email or Password.",
             ])
+            ->withError("Login failed.")
             ->onlyInput("email");
     }
 

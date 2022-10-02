@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClockInController;
 use App\Http\Controllers\LeaveController;
@@ -15,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 // Register
 Route::controller(RegisterController::class)->group(function () {
     Route::middleware("guest")->group(function () {
-        Route::get("/register-employee", "createEmployee")->name(
+        Route::get("/register/employee", "createEmployee")->name(
             "register.employee"
         );
-        Route::get("/register-admin", "createAdmin")->name("register.admin");
+        Route::get("/register/admin", "createAdmin")->name("register.admin");
     });
 
     Route::post("/register/store/{role}", "store")->name("register.store");
@@ -113,7 +114,7 @@ Route::controller(SearchController::class)->group(function () {
 Route::controller(ClockInController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function () {
         Route::post("/clock-in", "clockIn")->name("clockin");
-        Route::post("/clock-out", "clockOut")->name("clockout");
+        Route::any("/clock-out", "clockOut")->name("clockout");
     });
 });
 
@@ -131,7 +132,6 @@ Route::controller(TaskController::class)->group(function () {
         Route::post("/task/create", "store")->name("task.store");
         Route::get("/task/list", "list")->name("task.list");
         Route::get("/task/list/get", "listGet")->name("task.list-get");
-        Route::get("/task/list/all", "listAll")->name("task.list-all");
         Route::post("/task/list/get", "update")->name("task.update");
         Route::post("/task/list", "delete")->name("task.delete");
     });
@@ -141,5 +141,15 @@ Route::controller(TaskController::class)->group(function () {
 Route::controller(PayrollController::class)->group(function () {
     Route::middleware(["auth", "verified"])->group(function() {
         Route::get("/payroll", "show")->name("payroll.show");
+        Route::get("/payroll/get", "getPay")->name("payroll.get");
+        Route::post("/payroll/get", "updatePay")->name("payroll.update");
     }) ;
+});
+
+// Attendance
+Route::controller(AttendanceController::class)->group(function () {
+    Route::middleware(["auth", "verified"])->group(function() {
+        Route::any("/attendance", "show")->name("attendance.show");
+        Route::get("/attendance/get", "getAttendance")->name("attendance.get");
+    });
 });

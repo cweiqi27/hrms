@@ -18,7 +18,7 @@
                 icon="cash-outline"
             />
             <x-card.nav-card
-                route="search.staff"
+                route="attendance.show"
                 title="Attendance"
                 description="Keep track of employee attendance"
                 icon="time-outline"

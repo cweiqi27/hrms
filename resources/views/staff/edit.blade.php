@@ -11,7 +11,6 @@
             action="{{ route('staff.update') }}"
             method="POST"
             autocomplete="off"
-            class="mx-auto"
         >
             @csrf
 
@@ -22,7 +21,7 @@
                 <x-edit-field :val="$staff->contact_no" label_name="Contact No." name="contact_no" type="number" />
                 <x-edit-field :val="$staff->email" label_name="Email" name="email" type="text" />
 
-                <x-button.form-submit>Edit</x-button.form-submit>
+                <x-button.form-submit class="flex-initial">Edit</x-button.form-submit>
             </div>
 
         </form>

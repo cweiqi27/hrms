@@ -19,30 +19,57 @@
         </section>
 
         <x-layout.index-main>
-            <x-card.nav-card
-                route="task.show"
-                title="Task"
-                description="Assign task to employee"
-                icon="folder-open-outline"
-            />
-            <x-card.nav-card
-                route="leave.show"
-                title="Leave"
-                description="Handle leave applications"
-                icon="calendar-number-outline"
-            />
-            <x-card.nav-card
-                route="monitor.show"
-                title="Monitor"
-                description="Keep track of employee"
-                icon="eye-outline"
-            />
-            <x-card.nav-card
-                route="staff.profile"
-                title="Profile"
-                description="Your personal profile"
-                icon="person-circle-outline"
-            />
+            @if($staff->role === 'admin')
+                <x-card.nav-card
+                    route="task.show"
+                    title="Task"
+                    description="Assign task to employee"
+                    icon="folder-open-outline"
+                />
+                <x-card.nav-card
+                    route="leave.show"
+                    title="Leave"
+                    description="Handle leave applications"
+                    icon="calendar-number-outline"
+                />
+                <x-card.nav-card
+                    route="monitor.show"
+                    title="Monitor"
+                    description="Keep track of employee"
+                    icon="eye-outline"
+                />
+                <x-card.nav-card
+                    route="staff.profile"
+                    title="Profile"
+                    description="Your personal profile"
+                    icon="person-circle-outline"
+                />
+            @else
+                <x-card.nav-card
+                    route="task.show"
+                    title="Task"
+                    description="Perform assigned tasks"
+                    icon="folder-open-outline"
+                />
+                <x-card.nav-card
+                    route="leave.show"
+                    title="Leave"
+                    description="Request leaves"
+                    icon="calendar-number-outline"
+                />
+                <x-card.nav-card
+                    route="monitor.show"
+                    title="Monitor"
+                    description="Monitor work performance"
+                    icon="eye-outline"
+                />
+                <x-card.nav-card
+                    route="staff.profile"
+                    title="Profile"
+                    description="Your personal profile"
+                    icon="person-circle-outline"
+                />
+            @endif
         </x-layout.index-main>
     </x-layout.index-layout>
 

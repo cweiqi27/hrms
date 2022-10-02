@@ -31,9 +31,11 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        if($request->get('staff_id') == "") back()->withError('Please select an employee.');
+
         $formFields = $request->validate([
             'task_name' => ['required'],
-            'staff_id' => ['required']
+            'staff_id' => ['required', 'gte:1']
         ]);
 
         $formFields['task_status'] = 'assigned';
@@ -46,11 +48,10 @@ class TaskController extends Controller
         }
 
         return back()
-            ->with([
-                "staff" => Auth::user(),
-                "success" => "Task successfully created."
-            ])
-            ->withErrors('staff_id');
+                ->with([
+                    "staff" => Auth::user(),
+                    "success" => "Task successfully created."
+                ]);
     }
 
     public function list()
@@ -103,48 +104,26 @@ class TaskController extends Controller
     {
         $task = Task::find($request->input('task'));
         $task->task_status = $request->input('status');
+
+        if($request->input('status') === 'accepted')
+            $task->task_start_date = Carbon::now()->toDateTimeString();
+
+        if($request->input('status') === 'completed')
+            $task->task_end_date = Carbon::now()->toDateTimeString();
+
         $task->save();
 
         return back()
             ->withErrors('Error')
-            ->withSuccess('Status successfully updated.');
+            ->withSuccess('Task status successfully updated.');
     }
 
     public function delete(Request $request)
     {
+        Task::find($request->input('task'))->delete();
 
-    }
-
-    public function listAll()
-    {
-        $managed_staff = Staff::select('staffs.*')
-            ->where('manager_id', Auth::user()->staff_id)
-            ->get();
-
-        if(Auth::user()->role === 'admin') {
-            $managed_staff_id = Staff::select('staffs.staff_id')
-                ->where('manager_id', Auth::user()->staff_id)
-                ->get('staff_id')
-                ->toArray();
-            $task = Task::select('tasks.*')
-                ->whereIn('staff_id', $managed_staff_id)
-                ->where('task_status', '<>', 'completed' )
-                ->get();
-        } else {
-            $task = Task::where('staff_id', '=', Auth::user()->staff_id)
-                ->where('task_status', '=', 'assigned' )
-                ->orWhere('task_status', '=', 'accepted')
-                ->orWhere('task_status', '=', 'review')
-                ->get();
-        }
-
-        return view('task.show', [
-            'staff' => Auth::user(),
-            'task' => $task,
-            'task_count' => count($task),
-            'managed_staff' => $managed_staff,
-            'message_type' => 'info',
-            'is_list_all' => true
-        ]);
+        return back()
+            ->withErrors('Error')
+            ->withSuccess('Task successfully deleted.');
     }
 }

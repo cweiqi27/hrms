@@ -8,6 +8,7 @@
                     <h2 class="text-slate-600 text-xl">No employee assigned to you at the moment.</h2>
                 @else
                     <x-form.select labelName="Employee" name="staff_id">
+                        <option value="" selected disabled>Select employee</option>
                         @foreach($managed_staff as $managed_staffs)
                             <option value="{{ $managed_staffs->staff_id }}">{{ $managed_staffs->name }}</option>
                         @endforeach

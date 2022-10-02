@@ -10,7 +10,7 @@ return [
     'monitorLinksHref-admin' => [
         "0" => "search.staff",
         "1" => "payroll.show",
-        "2" => "monitor.show",
+        "2" => "attendance.show",
         "3" => "leave.show",
     ],
     'taskLinksCsv-admin' => 'Create,Review',

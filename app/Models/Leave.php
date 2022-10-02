@@ -12,6 +12,13 @@ class Leave extends Model
     // Relationships
     protected $primaryKey = "leave_id";
 
+    protected $fillable = [
+        "leave_status",
+        "leave_date",
+        "leave_type",
+        "staff_id"
+    ];
+
     public function staff()
     {
         return $this->belongsTo(Staff::class, "staff_id");

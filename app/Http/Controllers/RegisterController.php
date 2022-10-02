@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AvailableLeaves;
 use App\Models\Staff;
 use App\Models\WorkHours;
 use Illuminate\Auth\Events\Registered;
@@ -46,7 +47,6 @@ class RegisterController extends Controller
                 Rule::unique("staffs", "contact_no"),
             ],
             "status" => ["required", "min:3"],
-            "salary" => ["required", "min:3", "gte:0"],
             "department" => ["required"],
             "position" => ["required"],
             "level" => ["required"],
@@ -54,6 +54,9 @@ class RegisterController extends Controller
 
         // Append role to array (admin/employee)
         $formFields["role"] = $role;
+
+        // Set base salary (to be updated by admin with Payroll function)
+        $formFields["salary"] = 0;
 
         $role === 'employee'
             ? $formFields["manager_id"] = (
@@ -71,7 +74,17 @@ class RegisterController extends Controller
 
         // Create work hours row
         WorkHours::create([
-            'staff_id' => $staff->staff_id
+            'staff_id' => $staff->staff_id,
+            'monthly_work_hours' => 0,
+            'yearly_work_hours' => 0,
+            'accumulative_work_hours' => 0
+        ]);
+
+        AvailableLeaves::create([
+            'staff_id' => $staff->staff_id,
+            'available_annual_leaves' => 8,
+            'available_medical_leaves' => 14,
+            'available_maternity_leaves' => 60
         ]);
 
         // Login
@@ -79,9 +92,10 @@ class RegisterController extends Controller
 
         // Email verification
         event(new Registered($staff));
-        return redirect("/email/verify")->with(
-            "message",
-            "Verify email to continue"
-        );
+
+        return redirect("/email/verify")
+        ->with([
+            "info" => "Verify email to continue."
+        ]);
     }
 }

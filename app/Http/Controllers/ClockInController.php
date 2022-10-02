@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\WorkHours;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,15 +37,26 @@ class ClockInController extends Controller
 
         if($request->session()->has('clock-in') && Carbon::isBusinessClosed()) {
 
+            $clock_in_time = $request->session()->get('clock-in');
+            $clock_out_time = Carbon::now();
+
             Attendance::create([
                 'date' => Carbon::now()->toDateString(),
-                'clock_in_time' => $request->session()->get('clock-in'),
-                'clock_out_time' => Carbon::now()->toDateTimeString(),
+                'clock_in_time' => $clock_in_time,
+                'clock_out_time' => $clock_out_time->toDateTimeString(),
                 'staff_id' => Auth::user()->staff_id
             ]);
 
-            $request->session()->forget('clock-in');
+            $diff_hour = Carbon::parse($clock_in_time)->diffInHours($clock_out_time);
 
+            $work_hours = WorkHours::where('staff_id', '=', Auth::user()->staff_id)
+                ->get();
+
+            $work_hours->first()->increment('monthly_work_hours', $diff_hour);
+            $work_hours->first()->increment('yearly_work_hours', $diff_hour);
+            $work_hours->first()->increment('accumulative_work_hours', $diff_hour);
+
+            $request->session()->forget('clock-in');
 
             return back()
                 ->with([

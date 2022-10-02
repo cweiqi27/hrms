@@ -5,7 +5,7 @@
                 <x-title name="REGISTER" class="font-bold tracking-wider"/>
                 <h2 class="text-slate-700 text-right font-semibold">{{ $role }}</h2>
             </div>
-            <img src="img/HRMS-logos_black.png" alt="HRMS logo" class="w-48">
+            <img src="{{ asset('img/HRMS-logos_black.png') }}" alt="HRMS logo" class="w-48">
             <h2 class="text-slate-700">
                 Already have an account?
                 <a
@@ -37,22 +37,91 @@
                 <x-form.input labelName="Password" name="password" type="password" />
                 <x-form.input labelName="Confirm Password" name="password_confirmation" type="password" />
                 <x-form.input labelName="Contact Number" name="contact_no" type="number" min="0" />
-                <x-form.input labelName="Salary" name="salary" type="number" min="0" />
                 <x-form.input labelName="" name="status" value="Active" type="hidden" />
 
-                @if($role === 'admin')
-                    <x-form.input labelName="Department" name="department" value="HR" readonly/>
-                @else
-                    <x-form.select labelName="Department" name="department">
-                        <option value="HR">Human Resource</option>
-                        <option value="IT">Information Technology</option>
-                        <option value="Accounting/Finance">Accounting and Finance</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="R&D">Research and Development</option>
-                    </x-form.select>
-                @endif
+                <div x-data="{ departmentType: '' }">
 
-                <x-form.input labelName="Position" name="position" />
+                    {{--Department--}}
+                    @if($role === 'admin')
+                        <x-form.input labelName="Department" name="department" value="HR" readonly/>
+                    @else
+                        <label
+                            for="department"
+                            class="text-gray-600 text-sm font-semibold"
+                        >
+                            Department
+                        </label>
+
+                        <select
+                            x-model="departmentType"
+                            name="department"
+                            id="department"
+                            class="mt-2 mb-8 w-full px-3 py-2 border-2 rounded-md"
+                        >
+                            <option value="" disabled>Select department</option>
+                            <option value="HR">Human Resource</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="Accounting/Finance">Accounting and Finance</option>
+                            <option value="Marketing">Marketing</option>
+                        </select>
+                    @endif
+
+                    {{--Positions--}}
+                    @php
+                        $itPositions = array_keys(config('shared_vars.itPositions'));
+                        $financePositions = array_keys(config('shared_vars.financePositions'));
+                        $hrPositions = array_keys(config('shared_vars.hrPositions'));
+                        $marketingPositions = array_keys(config('shared_vars.marketingPositions'));
+                    @endphp
+                    <label
+                        for="position"
+                        class="text-gray-600 text-sm font-semibold"
+                    >
+                        Position
+                    </label>
+                    @if($role === 'admin')
+                        <select
+                            x-bind="departmentType"
+                            name="position"
+                            id="position"
+                            class="mt-2 mb-8 w-full px-3 py-2 border-2 rounded-md"
+                        >
+                            <option value="" disabled>Select position</option>
+                            @foreach($hrPositions as $hrPosition)
+                                <option value="{{ $hrPosition }}">{{ $hrPosition }}</option>
+                            @endforeach
+                        </select>
+                    @else
+                        <select
+                            x-bind="departmentType"
+                            name="position"
+                            id="position"
+                            class="mt-2 mb-8 w-full px-3 py-2 border-2 rounded-md"
+                        >
+                            <option value="" disabled>Select position</option>
+                            @foreach($itPositions as $itPosition)
+                                <template x-if="departmentType === 'IT'">
+                                        <option value="{{ $itPosition }}">{{ $itPosition }}</option>
+                                </template>
+                            @endforeach
+                            @foreach($financePositions as $financePosition)
+                                <template x-if="departmentType === 'Accounting/Finance'">
+                                    <option value="{{ $financePosition }}">{{ $financePosition }}</option>
+                                </template>
+                            @endforeach
+                            @foreach($hrPositions as $hrPosition)
+                                <template x-if="departmentType === 'HR'">
+                                    <option value="{{ $hrPosition }}">{{ $hrPosition }}</option>
+                                </template>
+                            @endforeach
+                            @foreach($marketingPositions as $marketingPosition)
+                                <template x-if="departmentType === 'Marketing'">
+                                    <option value="{{ $marketingPosition }}">{{ $marketingPosition }}</option>
+                                </template>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
 
                 <x-form.select labelName="Level" name="level">
                     <option value="Junior">Junior</option>
