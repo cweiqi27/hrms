@@ -14,7 +14,7 @@ class ClockInController extends Controller
     {
         $diff_hour_next = Carbon::parse(Carbon::now())->diffInRealHours(Carbon::nextOpen());
 
-        if(! $request->session()->exists('clock-in') && Carbon::isBusinessOpen()) {
+        if(! $request->session()->exists('clock-in')) {
             $request->session()->put('clock-in', Carbon::now()->toDateTimeString());
             return back()
                 ->with([
@@ -35,7 +35,7 @@ class ClockInController extends Controller
     {
         $diff_hour_next = Carbon::parse(Carbon::now())->diffInRealHours(Carbon::nextClose());
 
-        if($request->session()->has('clock-in') && Carbon::isBusinessClosed()) {
+        if($request->session()->has('clock-in')) {
 
             $clock_in_time = $request->session()->get('clock-in');
             $clock_out_time = Carbon::now();

@@ -27,9 +27,6 @@ class AttendanceController extends Controller
         $managed_staff = Staff::select('staffs.*')
             ->where('manager_id', Auth::user()->staff_id)
             ->get();
-        $employee = Staff::find($request->get('employee'));
-//        $work_hours = WorkHours::where('staff_id', '=', $employee->staff_id)
-//            ->get();
         $attendance = Attendance::where('staff_id', '=', $request->get('employee'))
             ->get();
         $leave = Leave::where('staff_id', '=', $request->get('employee'))
@@ -37,7 +34,6 @@ class AttendanceController extends Controller
 
         $now = Carbon::now();
         $period = [];
-        $attendance_arr = [];
 
         switch($request->get('period')) {
             case 'monthly':
@@ -70,14 +66,6 @@ class AttendanceController extends Controller
                 }
             }
         }
-
-
-//        $keys = array_keys($period);
-//        for($i = 0; $i < count($period); $i++) {
-//            foreach($period[$keys[$i]] as $key => $value) {
-//
-//            }
-//        }
 
         return view("monitor.attendance", [
             "staff" => Auth::user(),

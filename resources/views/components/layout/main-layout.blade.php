@@ -18,18 +18,6 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-{{--        <link href='fullcalendar/main.css' rel='stylesheet' />--}}
-{{--        <script src='fullcalendar/main.js'></script>--}}
-{{--        <script>--}}
-{{--            document.addEventListener('DOMContentLoaded', () => {--}}
-{{--                let calendarEl = document.getElementById('calendar');--}}
-{{--                let calendar = new FullCalendar.Calendar(calendarEl, {--}}
-{{--                    initialView: 'dayGridMonth'--}}
-{{--                });--}}
-{{--                calendar.render();--}}
-{{--            });--}}
-{{--        </script>--}}
     @endpush
 
     <title>HRMS - {{ $title }}</title>

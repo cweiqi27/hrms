@@ -15,9 +15,5 @@
     'holidaysAreClosed' => true,
     'holidays' => [
         'region' => 'asia/kuala_lumpur',
-        // 'with' => [
-        // 'boss-birthday' => '09-26',
-        // 'last-monday'   => '= last Monday of October',
-        // ],
     ],
 ];

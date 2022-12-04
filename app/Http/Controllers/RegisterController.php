@@ -80,6 +80,7 @@ class RegisterController extends Controller
             'accumulative_work_hours' => 0
         ]);
 
+        // Create leaves row
         AvailableLeaves::create([
             'staff_id' => $staff->staff_id,
             'available_annual_leaves' => 8,

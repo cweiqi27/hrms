@@ -119,9 +119,16 @@ Route::controller(ClockInController::class)->group(function () {
 });
 
 // Leave
-Route::get("/leave", [LeaveController::class, "show"])
-    ->middleware(["auth", "verified"])
-    ->name("leave.show");
+Route::controller(LeaveController::class)->group(function() {
+    Route::middleware(["auth", "verified"])->group(function() {
+        Route::get("/leave", [LeaveController::class, "show"])->name("leave.show");
+        Route::get("/leave/create", [LeaveController::class, "create"])->name("leave.create");
+        Route::post("/leave/create/store", [LeaveController::class, "store"])->name("leave.store");
+        Route::get("/leave/get", [LeaveController::class, "getLeave"])->name("leave.get");
+        Route::get("/leave/manage/admin", [LeaveController::class, "manageLeaveAdmin"])->name("leave.admin-manage");
+        Route::get("/leave/manage/staff", [LeaveController::class, "manageLeaveStaff"])->name("leave.staff-manage");
+    });
+});
 
 
 // Task

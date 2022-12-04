@@ -24,23 +24,37 @@
         </form>
     </section>
     @if(isset($period))
-        <section class="flex flex-col gap-4">
-            @foreach($period as $key => $date)
-                @php
-                    $isPresentKey = $date . "isPresent";
-                    $isLeaveKey = $date . "isLeave";
-                @endphp
-                @unless($key === true || $date === true)
-                    <div class="flex justify-center bg-emerald-300 p-4">
-                        <div>{{ $date }}</div>
-                    </div>
-                    @unless(array_key_exists($isPresentKey, $period))
-                        <div class="flex justify-center bg-red-300 p-4">
-                            <div>{{ $date }}</div>
-                        </div>
+        <section  class="mx-4">
+            {{--Legend--}}
+            <x-legend-color legend="Present" class="bg-emerald-500" />
+            <x-legend-color legend="Absent" class="bg-red-500" />
+            <x-legend-color legend="Leave" class="bg-yellow-500" />
+
+            <div class="flex flex-col gap-4">
+                @foreach($period as $key => $date)
+                    @php
+                        $isPresentKey = $date . "isPresent";
+                        $isLeaveKey = $date . "isLeave";
+                    @endphp
+                    @unless($key === true || $date === true)
+                        @if(array_key_exists($isPresentKey, $period))
+                            <div class="flex justify-center bg-emerald-500 p-4">
+                                <div>{{ $date }}</div>
+                            </div>
+                        @elseif(array_key_exists($isLeaveKey, $period))
+                            <div class="flex justify-center bg-yellow-500 p-4">
+                                <div>{{ $date }}</div>
+                            </div>
+                        @else
+                            <div class="flex justify-center bg-red-500 p-4">
+                                <div>{{ $date }}</div>
+                            </div>
+                        @endif
                     @endunless
-                @endunless
-            @endforeach
+                @endforeach
+            </div>
+
         </section>
+
     @endif
 </x-layout.main-layout>

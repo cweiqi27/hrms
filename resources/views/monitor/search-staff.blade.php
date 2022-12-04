@@ -1,5 +1,6 @@
 <x-layout.main-layout title="Monitor" type="dashboard" :role="$staff_role" sidebarLinkType="monitor">
     <main class="flex flex-col gap-4">
+        {{-- Search bar --}}
         <section class="flex flex-col gap-4 mt-10 px-2 sm:px-6 md:mx-auto">
             <x-search
                 route="search.staff.get"
@@ -17,6 +18,8 @@
                 </x-button.submit>
             </form>
         </section>
+
+        {{-- Search Results and Table --}}
         <section class="md:mx-auto">
             @unless (!isset($staff_details))
                 <x-alert.message :message="$message" :message_type="$message_type" />

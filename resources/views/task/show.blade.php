@@ -7,7 +7,7 @@
             <x-title name="Review Task" class="mx-4 mt-2"/>
             {{--Search--}}
             <section class="w-full p-4 md:w-1/2 mx-auto mt-4">
-                <form action="{{ route('task.list-get', 'test') }}" method="GET">
+                <form action="{{ route('task.list-get') }}" method="GET">
                     @csrf
                     @if(count($managed_staff) === 0)
                         <h2 class="text-slate-600 text-xl">No employee assigned to you at the moment.</h2>
@@ -71,7 +71,6 @@
                                         {{ $task_employee }}
                                     </h1>
                                 @endif
-
                                 <span class="">
                                 <h2 class="text-slate-300 text-md font-medium">
                                     {{ $date }}

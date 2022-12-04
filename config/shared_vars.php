@@ -1,5 +1,6 @@
 <?php
 return [
+// Sidebar Links
     'profileLinksCsv' => 'Profile,Edit,Security',
     'profileLinksHref' => [
         "0" => "staff.profile",
@@ -13,6 +14,11 @@ return [
         "2" => "attendance.show",
         "3" => "leave.show",
     ],
+    'monitorLinksCsv-employee' => 'Performance,Payroll',
+    'monitorLinksHref-employee' => [
+        "0" => "task.create",
+        "1" => "task.show",
+    ],
     'taskLinksCsv-admin' => 'Create,Review',
     'taskLinksHref-admin' => [
         "0" => "task.create",
@@ -22,11 +28,17 @@ return [
     'taskLinksHref-employee' => [
         "0" => "task.list"
     ],
-    'monitorLinksCsv-employee' => 'Performance,Payroll',
-    'monitorLinksHref-employee' => [
-        "0" => "task.create",
-        "1" => "task.show",
+    'leaveLinksCsv-admin' => 'Apply leave,Leave status',
+    'leaveLinksHref-admin' => [
+        "0" => "leave.show",
+        "1" => "leave.show"
     ],
+    'leaveLinksCsv-employee' => 'Apply leave,Leave status',
+    'leaveLinksHref-employee' => [
+        "0" => "leave.create",
+        "1" => "leave.show"
+    ],
+// Job positions and Base Salaries
     'itPositions' => [
         "Backend Developer" => "3200",
         "Data Scientist" => "3400",
@@ -58,5 +70,29 @@ return [
         "Creative Director" => "5000",
         "Digital Marketing Manager" => "3500",
         "Marketing Analyst" => "3000",
+    ],
+    // Malaysia Public Holidays Dates
+    'publicHolidays' => [
+        '2022-01-01',
+        '2022-01-18',
+        '2022-02-01',
+        '2022-02-02',
+        '2022-02-03',
+        '2022-04-19',
+        '2022-05-01',
+        '2022-05-02',
+        '2022-05-03',
+        '2022-05-04',
+        '2022-05-15',
+        '2022-05-16',
+        '2022-06-06',
+        '2022-06-10',
+        '2022-06-30',
+        '2022-08-31',
+        '2022-09-16',
+        '2022-10-09',
+        '2022-10-10',
+        '2022-12-25',
+        '2022-12-26',
     ]
 ];
