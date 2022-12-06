@@ -75,6 +75,7 @@
                     </li>
                 @endcannot
             @endunless
+
             <li>
                 <a
                     class="py-3.5 px-2 font-medium text-slate-600 hover:border-b-4 border-emerald-700 hover:text-emerald-500 transition-colors duration-150 cursor-pointer"

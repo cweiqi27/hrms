@@ -100,7 +100,7 @@ class LeaveController extends Controller
         $managed_staff = Staff::select('staffs.*')
             ->where('manager_id', Auth::user()->staff_id)
             ->get();
-        $leave = Leave::where('staff_id', '=', $request->get('employee'))
+        $leaves = Leave::where('staff_id', '=', $request->get('employee'))
             ->where('leave_date', '>', Carbon::yesterday())
             ->get();
         $employee = Staff::where('staff_id', '=', $request->get('employee'))
@@ -108,7 +108,7 @@ class LeaveController extends Controller
 
         return view('leave.manage-admin', [
             'staff' => Auth::user(),
-            'leave' => $leave,
+            'leaves' => $leaves,
             'managed_staff' => $managed_staff,
             'employee' => $employee,
             'message_type' => 'info'

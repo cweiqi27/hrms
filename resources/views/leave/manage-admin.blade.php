@@ -1,5 +1,6 @@
 <x-layout.main-layout title="Leave" type="dashboard" :role="$staff->role" sidebarLinkType="leave">
-    <main class="flex flex-col gap-4">
+    <main class="flex flex-col gap-4 p-4">
+        <x-title name="Manage Leave"></x-title>
         <section class="w-full p-4 md:w-1/2 mx-auto mt-4">
             <form action="{{ route('leave.get') }}" method="GET">
                 @csrf
@@ -18,5 +19,38 @@
                 @endif
             </form>
         </section>
+        @unless(!isset($leaves))
+            <section class="md:mx-auto">
+                <x-table titleCsv="Leave Date,Leave Type,Status,Action">
+                    @foreach($leaves as $leave)
+                        <tr class="odd:bg-emerald-50 even:bg-emerald-100">
+                            <td class="p-3">{{ $leave->leave_date }}</td>
+                            <td class="p-3">{{ $leave->leave_type }}</td>
+                            <td class="p-3">{{ $leave->leave_status }}</td>
+                            <td class="flex p-3">
+                                @if($leave->leave_status === 'pending')
+                                    <form action="{{ route('leave.update') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="task" value="{{ $leave->leave_id }}">
+                                        <input type="hidden" name="status" value="approved">
+                                        <x-button.submit>
+                                            <ion-icon name="checkmark-circle-sharp" class="text-green-400 hover:text-green-300 text-xl" />
+                                        </x-button.submit>
+                                    </form>
+                                    <form action="{{ route('leave.update') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="task" value="{{ $leave->leave_id }}">
+                                        <input type="hidden" name="status" value="accepted">
+                                        <x-button.submit>
+                                            <ion-icon name="close-circle-sharp" class="text-amber-400 hover:text-amber-300 text-xl" />
+                                        </x-button.submit>
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </x-table>
+            </section>
+        @endunless
     </main>
 </x-layout.main-layout>

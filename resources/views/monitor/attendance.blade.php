@@ -1,4 +1,5 @@
 <x-layout.main-layout title="Attendance" type="dashboard" :role="$staff->role" sidebarLinkType="monitor">
+    {{--Admin--}}
     <section class="flex flex-col gap-4 mt-10 px-2 sm:px-6">
         {{--Search bar--}}
         <form action="{{ route('attendance.get') }}" method="GET">
@@ -53,7 +54,6 @@
                     @endunless
                 @endforeach
             </div>
-
         </section>
 
     @endif

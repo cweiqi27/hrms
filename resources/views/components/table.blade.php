@@ -1,5 +1,6 @@
 @props(['titleCsv'])
 
+{{--Pass in a csv as the title and header of the table--}}
 @php
     $title = explode(',', $titleCsv);
 @endphp

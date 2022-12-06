@@ -127,6 +127,7 @@ Route::controller(LeaveController::class)->group(function() {
         Route::get("/leave/get", [LeaveController::class, "getLeave"])->name("leave.get");
         Route::get("/leave/manage/admin", [LeaveController::class, "manageLeaveAdmin"])->name("leave.admin-manage");
         Route::get("/leave/manage/staff", [LeaveController::class, "manageLeaveStaff"])->name("leave.staff-manage");
+        Route::post("/leave/manage/staff", [LeaveController::class, "update"])->name("leave.update");
     });
 });
 
