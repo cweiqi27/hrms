@@ -23,9 +23,12 @@
                 <form action="{{ route('payroll.update') }}" method="POST">
                     @csrf
                     <input type="hidden" name="employee" value="{{ $employee->staff_id }}">
-                    <x-button.submit>Update Salary</x-button.submit>
+                  
+                        <x-button.form-submit class="max-w-sm">  Update Salary </x-button.form-submit>
+                   
                 </form>
             </section>
         @endif
     </main>
 </x-layout.main-layout>
+

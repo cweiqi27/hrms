@@ -9,7 +9,7 @@
                 <x-card.nav-card
                     route="leave.admin-manage"
                     title="Manage Leave"
-                    description="Assign task to employee"
+                    description="Review employee leave request"
                     icon="clipboard-outline"
                 />
             @else

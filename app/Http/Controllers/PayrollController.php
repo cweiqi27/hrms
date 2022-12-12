@@ -20,7 +20,7 @@ class PayrollController extends Controller
         ]);
     }
 
-    // This method will display the current salary (yet to be updated, in DB),
+    // display the current salary (yet to be updated, in DB),
     // and the expected year-end bonus taking into account
     // on hours worked in that year.
     public function getPay(Request $request)

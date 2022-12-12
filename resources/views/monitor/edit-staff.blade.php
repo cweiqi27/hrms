@@ -9,7 +9,8 @@
             autocomplete="off"
             class="mx-auto"
         >
-            @csrf
+        {{-- cross-site request forgery (CSRF)  to prevent SQL injection --}}
+            @csrf   
 
             <div
                 class="flex flex-col gap-4 mt-4"

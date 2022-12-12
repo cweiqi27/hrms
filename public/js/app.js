@@ -659,6 +659,15 @@ var directiveOrder = [
   "ref",
   "data",
   "id",
+  "radio",
+  "tabs",
+  "switch",
+  "disclosure",
+  "menu",
+  "listbox",
+  "list",
+  "item",
+  "combobox",
   "bind",
   "init",
   "for",
@@ -1337,11 +1346,11 @@ function getBinding(el, name, fallback) {
   let attr = el.getAttribute(name);
   if (attr === null)
     return typeof fallback === "function" ? fallback() : fallback;
+  if (attr === "")
+    return true;
   if (isBooleanAttr(name)) {
     return !![name, "true"].includes(attr);
   }
-  if (attr === "")
-    return true;
   return attr;
 }
 
@@ -1474,7 +1483,7 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.10.3",
+  version: "3.10.5",
   flushAndStopDeferringMutations,
   dontAutoEvaluateFunctions,
   disableEffectScheduling,
@@ -2635,8 +2644,9 @@ directive("bind", (el, {value, modifiers, expression, original}, {effect: effect
     return storeKeyForXFor(el, expression);
   let evaluate2 = evaluateLater(el, expression);
   effect3(() => evaluate2((result) => {
-    if (result === void 0 && expression.match(/\./))
+    if (result === void 0 && typeof expression === "string" && expression.match(/\./)) {
       result = "";
+    }
     mutateDom(() => bind(el, value, result, modifiers));
   }));
 });
@@ -5449,20 +5459,15 @@ __webpack_require__.r(__webpack_exports__);
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
 window.flatpckr = flatpickr__WEBPACK_IMPORTED_MODULE_2__["default"];
-
 __webpack_require__(/*! flatpickr/dist/themes/material_green.css */ "./node_modules/flatpickr/dist/themes/material_green.css");
-
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
-
 window.editField = function (fieldVal) {
   return {
     val: fieldVal,
     isEditing: false,
     toggleEditingState: function toggleEditingState() {
       var _this = this;
-
       this.isEditing = !this.isEditing;
-
       if (this.isEditing) {
         this.$nextTick(function () {
           _this.$refs.input.focus();
@@ -5491,6 +5496,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 window._ = (lodash__WEBPACK_IMPORTED_MODULE_0___default());
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -5500,14 +5506,18 @@ window._ = (lodash__WEBPACK_IMPORTED_MODULE_0___default());
 
 window.axios = (axios__WEBPACK_IMPORTED_MODULE_1___default());
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+
 // import Echo from 'laravel-echo';
+
 // import Pusher from 'pusher-js';
 // window.Pusher = Pusher;
+
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
