@@ -7,6 +7,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StaffController;
@@ -151,6 +152,13 @@ Route::controller(PayrollController::class)->group(function () {
         Route::get("/payroll", "show")->name("payroll.show");
         Route::get("/payroll/get", "getPay")->name("payroll.get");
         Route::post("/payroll/get", "updatePay")->name("payroll.update");
+    }) ;
+});
+
+Route::controller(PerformanceController::class)->group(function () {
+    Route::middleware(["auth", "verified"])->group(function() {
+        Route::get("/performance", "show")->name("performance.show");
+        Route::get("/performance/get", "get")->name("performance.get");
     }) ;
 });
 

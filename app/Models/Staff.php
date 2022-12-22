@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Notifications\ResetPasswordNotification;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,12 +38,12 @@ class Staff extends Authenticatable implements MustVerifyEmail, CanResetPassword
     }
 
     // Password reset notification
-    public function sendPasswordResetNotification($token)
-    {
-        $url = "https://localhost:8002/reset-password?token=" . $token;
-
-        $this->notify(new ResetPasswordNotification($url));
-    }
+//    public function sendPasswordResetNotification($token)
+//    {
+//        $url = "https://localhost:8002/reset-password?token=" . $token;
+//
+//        $this->notify($url);
+//    }
 
     /**
      * The attributes that are mass assignable.

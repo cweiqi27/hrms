@@ -50,7 +50,6 @@ class PayrollController extends Controller
                 "bonus" => $bonus,
                 "staff_list" => $managed_staff
             ]);
-
     }
 
     // This method will update the employee's salary based on three factors,

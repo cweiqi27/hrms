@@ -12,12 +12,13 @@ return [
         "0" => "search.staff",
         "1" => "payroll.show",
         "2" => "attendance.show",
-        "3" => "leave.show",
+        "3" => "performance.show",
     ],
-    'monitorLinksCsv-employee' => 'Performance,Payroll',
+    'monitorLinksCsv-employee' => 'Payroll,Attendance,Performance',
     'monitorLinksHref-employee' => [
-        "0" => "task.create",
-        "1" => "task.show",
+        "0" => "payroll.show",
+        "1" => "attendance.show",
+        "2" => "performance.show",
     ],
     'taskLinksCsv-admin' => 'Create,Review',
     'taskLinksHref-admin' => [

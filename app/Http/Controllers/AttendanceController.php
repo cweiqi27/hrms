@@ -17,16 +17,17 @@ class AttendanceController extends Controller
         $managed_staff = Staff::select('staffs.*')
             ->where('manager_id', Auth::user()->staff_id)
             ->get();
-        return view("monitor.attendance", [
-            "staff" => Auth::user(),
-            "staff_list" => $managed_staff
-        ]);
+        return Auth::user()->role === 'admin'
+            ? view("monitor.attendance", [
+                "staff" => Auth::user(),
+                "staff_list" => $managed_staff
+            ])
+            : view("monitor.attendance", [
+                "staff" => Auth::user()
+            ]);
     }
 
     public function getAttendance(Request $request) {
-        $managed_staff = Staff::select('staffs.*')
-            ->where('manager_id', Auth::user()->staff_id)
-            ->get();
         $attendance = Attendance::where('staff_id', '=', $request->get('employee'))
             ->get();
         $leave = Leave::where('staff_id', '=', $request->get('employee'))
@@ -66,6 +67,17 @@ class AttendanceController extends Controller
                 }
             }
         }
+
+        if(Auth::user()->role === 'employee') {
+            return view("monitor.attendance", [
+                "staff" => Auth::user(),
+                "period" => $period
+            ]);
+        }
+
+        $managed_staff = Staff::select('staffs.*')
+            ->where('manager_id', Auth::user()->staff_id)
+            ->get();
 
         return view("monitor.attendance", [
             "staff" => Auth::user(),
