@@ -28,7 +28,6 @@
 - [PHP](https://www.php.net/manual/en/install.php) version `>= 8`
 - [MySQL](https://dev.mysql.com/downloads/installer/) 
 - *Optional: [XAMPP](https://www.apachefriends.org/)*
-> Skip installing PHP and MySQL independently if you use XAMPP since they're already included
 
 ## Install on your local system
 ### Clone the project
