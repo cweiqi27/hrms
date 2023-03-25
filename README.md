@@ -1,5 +1,5 @@
 
-# HRMS FYP
+# Human Resource Management System
 ## Tech Stack
 ### Languages
 - [PHP](https://www.php.net/)
