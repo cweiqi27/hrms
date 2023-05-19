@@ -33,7 +33,7 @@
 ### Clone the project
 Run the command below to clone this repository:
 ```bash
-git clone https://github.com/jhuneu/FYP2.git
+git clone https://github.com/cweiqi27/hrms.git
 ```
  
  ### Install all packages
